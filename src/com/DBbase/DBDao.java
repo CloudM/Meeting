@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 //import com.sun.crypto.provider.RC2Cipher;
-
+//
 public class DBDao {
 	private static String driver="com.mysql.jdbc.Driver";
 	private String url="jdbc:mysql://localhost:3306/test";
