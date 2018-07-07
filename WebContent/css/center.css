@@ -1,0 +1,164 @@
+#container1{
+	width: 100%;
+	height: 180px;
+	background: url(../images/banner.jpg);
+	background-size: cover;
+}
+
+.user-info {
+    position: relative;
+    width: 1152px;
+    margin: 0 auto;
+}
+
+.user-info .user-pic {
+    float: left;
+    width: 148px;
+    height: 148px;
+}
+
+.user-info .user-pic .user-pic-bg {
+    border: 4px solid #FFF;
+    box-shadow: 0 4px 8px 0 rgba(7,17,27,.1);
+    width: 148px;
+    height: 148px;
+    position: relative;
+    border-radius: 50%;
+    background: #fff;
+    top: 24px;
+}
+
+.user-info .user-pic .user-pic-bg .img {
+    text-align: center;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+}
+
+.user-info .user-info-right {
+    float: right;
+    width: 980px;
+}
+
+.user-info .user-name {
+    font-weight: 600;
+    text-align: left;
+    font-size: 24px;
+    color: #FFF;
+    line-height: 28px;
+    margin-top: 48px;
+}
+
+.user-info .user-name .signicon, .user-head-info .user-info .user-name span {
+    float: left;
+}
+
+.user-info .about-info {
+    font-size: 14px;
+    color: #fff;
+    line-height: 20px;
+    text-align: left;
+    margin-top: 6px;
+}
+
+.user-info .about-info span {
+    display: inline-block;
+    margin-right: 10px;
+    font-size: 14px;
+    color: #FFF;
+    line-height: 20px;
+}
+
+.leftnave{
+	position: absolute;
+	top:70px;
+	left: 0;
+	margin-bottom: 100px;
+}
+
+#naveul{
+	width: 150px;
+	text-align: center;
+}
+
+
+.navbar-fixed-top ~ .content {
+   padding-top: 70px;
+}
+.navbar-fixed-bottom ~ .content {
+  padding-bottom: 70px;
+}
+
+
+.common-title {
+	margin-top: 30px;
+	margin-left: 20px;
+    line-height: 40px;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.line {
+    height: 1px;
+    background-color: #d0d6d9;
+    margin-top: 12px;
+    margin-left: 20px;
+
+}
+
+.info-wapper {
+    margin: 24px auto 24px 40px;
+}
+
+.info-box {
+    margin-bottom: 12px;
+}
+
+.info-box label {
+    width: 120px;
+    line-height: 20px;
+    padding: 20px 0;
+    text-align: center;
+    background-color: #f3f5f7;
+    color: #07111b;
+    font-weight: 700;
+}
+
+.info-box div {
+    width: 708px;
+    margin-left: 8px;
+    line-height: 20px;
+    padding: 20px 0 20px 22px;
+    border-bottom: 1px solid #d9dde1;
+}
+
+.reg{
+    font-size: 18px;
+    color: #11a3fc;
+    cursor: pointer;
+}
+
+.form-horizontal .form-control1{
+    background: #f0f0f0;
+    border: none;
+    border-radius: 20px;
+    box-shadow: none;
+    padding: 0 20px 0 45px;
+    height: 40px;
+    transition: all 0.3s ease 0s;
+    float: right;
+    margin-right: 20%;
+}
+
+.form-horizontal .form-control1:focus{
+    background: #e0e0e0;
+    box-shadow: none;
+    outline: 0 none;
+}
+
+.reginfo{
+    float: left;
+    margin-left: 20px;
+    font-family: 'Arial';
+    font-size: 16px;
+}
