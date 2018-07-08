@@ -11,9 +11,9 @@ import java.sql.SQLException;
 //
 public class DBDao {
 	private static String driver="com.mysql.jdbc.Driver";
-	private String url="jdbc:mysql://localhost:3306/test";
+	private String url="jdbc:mysql://localhost:3306/yourdatabasename";
 	private String user = "root";
-	private String pwd="zhukuang081105";
+	private String pwd="password";
 	private Connection conn = null;
 	private PreparedStatement pstmt = null;
 	private ResultSet rs = null;

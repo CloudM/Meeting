@@ -3,10 +3,10 @@ package com.UserDao;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.DBbase.DBbase;
+import com.DBbase.DBDao;
 import com.entity.User;
 
-public class UserDaoImpl extends DBbase implements UserDao{
+public class UserDaoImpl extends DBDao implements UserDao{
 
 	public int doDelete(int id) {
 		String sql = "DELETE FROM User WHERE UserID = " + id;

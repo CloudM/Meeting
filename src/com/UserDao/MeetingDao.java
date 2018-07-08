@@ -12,5 +12,6 @@ public int DeleteMeeting(Meeting m);
 public ResultSet FindMeeting(Meeting m);
 //change the status of meeting
 public int ReleaseMeeting(Meeting m);
+//change the information of meeting
 public int UpdateMeeting(Meeting m);
 }
