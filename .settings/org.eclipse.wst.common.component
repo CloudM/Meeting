@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+<<<<<<< HEAD
         
     <wb-module deploy-name="CloudM">
                 
@@ -11,4 +12,12 @@
             
     </wb-module>
     
+=======
+    <wb-module deploy-name="Meetings">
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <property name="context-root" value="Meetings"/>
+        <property name="java-output-path" value="/Meetings/build/classes"/>
+    </wb-module>
+>>>>>>> branch 'master' of https://github.com/CloudM/Meeting.git
 </project-modules>
