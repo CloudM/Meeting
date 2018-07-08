@@ -18,4 +18,13 @@
     <servlet-name>LoginAndRegister</servlet-name>
     <url-pattern>/LoginAndRegister</url-pattern>
   </servlet-mapping>
+  
+    <servlet>
+    <servlet-name>CreateAndReleaseMeeting</servlet-name>
+    <servlet-class>com.action.MeetingAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreateAndReleaseMeeting</servlet-name>
+    <url-pattern>/CreateAndReleaseMeeting</url-pattern>
+  </servlet-mapping>
 </web-app>

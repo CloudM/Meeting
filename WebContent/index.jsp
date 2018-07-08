@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">  
 </head>
 
-<body>
+	<body>
 
 <div class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="navbar-header">

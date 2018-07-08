@@ -11,8 +11,8 @@ public class MeetingDaoImpl extends DBDao implements  MeetingDao{
 	//add meeting with sql statement realization
 	//return row number
     public int AddMeeting(Meeting m) {
-    	String sql="insert into meeting values(null,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-		 Object[] obs={m.getTypeid(),m.getUserid(),m.getMeetingStatus(),m.getStartTime(),m.getEndTime(),m.getPlace(),null,m.getGuest(),m.getDescribe(),m.getRemarks(),"now",m.getMname(),m.getHost()};
+    	String sql="insert into meeting values(null,?,?,?,?,?,?,null,?,?,?,now(),?,?)";
+		 Object[] obs={m.getTypeid(),m.getUserid(),m.getMeetingStatus(),m.getStartTime(),m.getEndTime(),m.getPlace(),m.getGuest(),m.getDescribe(),m.getRemarks(),m.getMname(),m.getHost()};
 		return ExecuteUpdate(sql, obs);
     }
     //delete meeting according to mid with sql statement realization

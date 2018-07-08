@@ -45,14 +45,15 @@ public class LoginAndRegister extends HttpServlet {
     		System.out.println("登录成功");
     		request.setAttribute("User", u);
     		//User user = (User)request.getAttribute("User");***在其它.java文件中用本行代码获取存入的user对象信息。
-    		request.getRequestDispatcher("center.jsp").forward(request, response);
+    		request.getRequestDispatcher("jsp/center.jsp").forward(request, response);
     	} else {
     		//通知用户登录失败
     		System.out.println("登录失败");
+    		PrintWriter out=response.getWriter();
+    		out.print("<script language='javascript'>alert('登录失败，账号或密码输入错误。');window.location.href='index.jsp';</script>");
     	}
 
     }
-    
     private  void register(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException {
     	
     	User u = new User();
@@ -64,7 +65,7 @@ public class LoginAndRegister extends HttpServlet {
 			//已经使用这个邮箱申请账号，需要对界面进行的操作
     		System.out.println("邮箱已被注册");
     		PrintWriter out=response.getWriter();
-    		out.print("<script language='javascript'>alert('邮箱已被注册');window.location.href='login.jsp';</script>");
+    		out.print("<script language='javascript'>alert('邮箱已被注册');window.location.href='index.jsp';</script>");
 			//response.sendRedirect("login.jsp");
 		} else {
 			Boolean isEmail = true; 
@@ -77,12 +78,14 @@ public class LoginAndRegister extends HttpServlet {
 			} catch (Exception e) {
 				isEmail = false;
 				//提示用户邮箱信息有误
-	    		System.out.println("邮箱信息错误" + u.getUEmail());
+	    		System.out.println("邮箱信息错误");
+	    		PrintWriter out=response.getWriter();
+	    		out.print("<script language='javascript'>alert('邮箱信息错误');window.location.href='index.jsp';</script>");
 			}
 			//数据插入
 			if(isEmail) {
 				service.SdoRegister(u);
-				response.sendRedirect("login.jsp");
+				response.sendRedirect("index.jsp");
 			}
 			//其它操作
 		}
