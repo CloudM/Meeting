@@ -3,7 +3,7 @@ package com.UserDao;
 import java.sql.ResultSet;
 
 import com.entity.User;
-///////
+
 public interface UserDao {
 	public int doDelete(int id);
 	public ResultSet doLogin(User u);
