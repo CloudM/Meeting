@@ -1,3 +1,4 @@
+//Karenzhu
 package com.action;
 
 import java.io.IOException;
@@ -39,17 +40,17 @@ public class MeetingAction extends HttpServlet {
 	 m.setStartTime(request.getParameter("meetingtime"));
 	 if(service.SFindMeeting(m) != null) {
 		 if(service.SUpdateMeeting(m)==true) {
-			 System.out.println("�޸Ļ���ɹ���");
+			 System.out.println("锟睫改伙拷锟斤拷晒锟斤拷锟�");
 			}
 			else {
-				System.out.println("�����޸�ʧ�ܣ�������Ϣ��д�Ƿ�����");
+				System.out.println("锟斤拷锟斤拷锟睫革拷失锟杰ｏ拷锟斤拷锟斤拷锟斤拷息锟斤拷写锟角凤拷锟斤拷锟斤拷");
 			}
 	 }
 	if(service.SAddMeeting(m)==true){
-		System.out.println("��������ɹ���");
+		System.out.println("锟斤拷锟斤拷锟斤拷锟斤拷晒锟斤拷锟�");
 	}
 	else {
-		System.out.println("���鴴��ʧ�ܣ�������Ϣ��д�Ƿ�����");
+		System.out.println("锟斤拷锟介创锟斤拷失锟杰ｏ拷锟斤拷锟斤拷锟斤拷息锟斤拷写锟角凤拷锟斤拷锟斤拷");
 	}
 	 
  }
