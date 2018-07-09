@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <title>登录页面</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link href="./css/login.css" rel="stylesheet" type="text/css">  
-    <link href="./css/public.css" rel="stylesheet" type="text/css">   
+    <link href="../css/public.css" rel="stylesheet" type="text/css">   
+    <link href="../css/login.css" rel="stylesheet" type="text/css">  
      <!-- 新 Bootstrap 核心 CSS 文件 -->
     <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">  
 </head>
@@ -116,6 +116,7 @@
                     <input type="email" class="form-control1" id="inputEmail3" placeholder="输入邮箱地址">
                     <i class="fa fa-user"></i>
                 </div>
+
                 <div class="form-group">
                     <label class="reginfo">用户名</label>
                     <input type="email" class="form-control1" id="inputEmail3" placeholder="输入用户名">
@@ -135,7 +136,18 @@
                     <i class="fa fa-lock"></i>
                     <a href="#" class="fa fa-question-circle"></a>
                 </div>
+
+
+                <div class="form-group">
+                    <label class="reginfo">验证码</label>
+                    <input type="password" class="form-control1" id="inputPassword3" placeholder="输入验证码">
+                    <i class="fa fa-lock"></i>
+                    <a href="#" class="fa fa-question-circle"></a>
+                </div>
+                  <a class="test" href="#">发送验证码</a>
             </form>
+
+
         
             </div>
             
@@ -158,6 +170,6 @@
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<script src="js/index.js"></script>
+<script src="../js/index.js"></script>
 </body>
 </html>

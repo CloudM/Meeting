@@ -6,8 +6,9 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link href="./css/login.css" rel="stylesheet" type="text/css">  
-    <link href="./css/public.css" rel="stylesheet" type="text/css">   
+    
+    <link href="css/public.css" rel="stylesheet" type="text/css">   
+    <link href="css/login.css" rel="stylesheet" type="text/css">  
      <!-- 新 Bootstrap 核心 CSS 文件 -->
     <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">  
 </head>
@@ -119,6 +120,13 @@
                     <i class="fa fa-lock"></i>
                     <a href="#" class="fa fa-question-circle"></a>
                 </div>
+                <div class="form-group">
+                    <label class="reginfo">验证码</label>
+                    <input type="password" class="form-control1" id="inputPassword3" placeholder="输入验证码">
+                    <i class="fa fa-lock"></i>
+                    <a href="#" class="fa fa-question-circle"></a>
+                </div>
+                  <a class="test" href="#">发送验证码</a>
 	            <div class="modal-footer">
 	                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
 	                <button type="submit" class="btn btn-primary">提交</button>

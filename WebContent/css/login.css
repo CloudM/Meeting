@@ -234,3 +234,9 @@ canvas{
   margin-top: 3%;
   bottom: 0;
 }
+
+
+.test{
+    display: inline-block;
+    float: right;
+}

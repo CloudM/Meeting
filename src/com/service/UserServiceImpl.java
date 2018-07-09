@@ -133,7 +133,7 @@ public class UserServiceImpl implements UserService {
 		return false;
 	}
 	
-	public User SgetUser(String uid) {
+	public User SgetUser(int uid) {
 		User u = new User();
 		try {
 			ResultSet rs = dao.getUser(uid);
@@ -158,4 +158,5 @@ public class UserServiceImpl implements UserService {
 		}
 		return u;
 	}
+	
 }

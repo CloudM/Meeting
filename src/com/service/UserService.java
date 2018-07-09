@@ -9,5 +9,5 @@ public interface UserService {
 	public boolean SdoRegister(User u);
 	public boolean ShaveRegister(String email);
 	public boolean SResetUser(User u);
-	public User SgetUser(String uid);
+	public User SgetUser(int i);
 }

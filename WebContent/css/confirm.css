@@ -4,3 +4,21 @@
 	margin-right: auto;
 }
 
+.operation{	
+	width: 20%;
+	
+}
+
+
+#con1{
+	float: right;
+	height: 100%;
+	margin-left: auto;
+	margin-right: auto;
+}
+#con2{
+	float: left;
+	height: 100%;
+	margin-left: auto;
+	margin-right: auto;
+}

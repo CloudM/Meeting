@@ -10,6 +10,6 @@ public interface UserDao {
 	public int doRegister(User u);
 	public ResultSet haveRegister(String email);
 	public int resetUser(User u);
-	public ResultSet getUser(String uid);
+	public ResultSet getUser(int uid);
 }
 

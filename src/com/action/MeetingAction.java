@@ -1,6 +1,6 @@
 //Karenzhu
 package com.action;
-//
+
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -35,30 +35,28 @@ public class MeetingAction extends HttpServlet {
 	 m.setPlace(request.getParameter("place"));
 	 m.setRemarks(request.getParameter("remark"));
 	 m.setStartTime(request.getParameter("time"));
-	 if(request.getParameter("type")=="yantaohui") {
+	 if(request.getParameter("type").equals("yantaohui")) {
 		 m.setTypeid(1);
 		 
 	 }
-	 else if(request.getParameter("type")=="yantaohui") {
-		 m.setTypeid(2);
+	 
+    else if(request.getParameter("type").equals("luntan")) {
+	     m.setTypeid(2);
 	 }
-    else if(request.getParameter("type")=="luntan") {
+    else if(request.getParameter("type").equals("zuotanhui")) {
 	     m.setTypeid(3);
-	 }
-    else if(request.getParameter("type")=="zuotanhui") {
+     }
+    else if(request.getParameter("type").equals("taolunhui")) {
 	     m.setTypeid(4);
      }
-    else if(request.getParameter("type")=="taolunhui") {
-	     m.setTypeid(5);
-     }
-    else if(request.getParameter("type")=="jiangzuo") { 
-         m.setTypeid(6);
+    else if(request.getParameter("type").equals("jiangzuo")) { 
+         m.setTypeid(5);
     }
-    else if(request.getParameter("type")=="bianlunhui") {
+    else if(request.getParameter("type").equals("bianlunhui")) {
+	     m.setTypeid(6);
+    }
+    else if(request.getParameter("type").equals("else")) {
 	     m.setTypeid(7);
-    }
-    else if(request.getParameter("type")=="else") {
-	     m.setTypeid(8);
     }
 	 String create = request.getParameter("create");
 	 String release = request.getParameter("release");
@@ -73,40 +71,48 @@ public class MeetingAction extends HttpServlet {
  
  public void CreateMeeting(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
 	
-	if(service.SFindMeeting(m) != null) {
-		 if(service.SUpdateMeeting(m)==true) {
-			 System.out.println("修改会议成功");
-	    		PrintWriter out=response.getWriter();
-	    		out.print("<script language='javascript'>alert('修改会议成功');window.location.href='center.jsp';</script>");
-			}
-		 else {
-			System.out.println("修改会议失败，请检查所填信息");
-			}
-	 }
-	else {
+	//if(service.SFindMeeting(m) != null) {
+		// if(service.SUpdateMeeting(m)==true) {
+		//	 System.out.println("修改会议成功");
+	    //		PrintWriter out=response.getWriter();
+	    //		out.print("<script language='javascript'>alert('修改会议成功');window.location.href='center.jsp';</script>");
+		//	}
+		// else {
+		//	System.out.println("修改会议失败，请检查所填信息");
+		//	}
+	// }
+	//else {
+	 try {
+		 //service.SAddMeeting(m);
 	    if(service.SAddMeeting(m)==true){
 		  System.out.println("创建会议成功");
+		  PrintWriter out=response.getWriter();
+			out.print("<script language='javascript'>alert('创建会议成功');window.location.href='createandrelease.jsp';</script>");
+		
 		   request.getRequestDispatcher("jsp/center.jsp").forward(request, response);
 		
 	    }
-	    else {
-		System.out.println("创建会议失败，请检查所填信息");
-		PrintWriter out=response.getWriter();
-		out.print("<script language='javascript'>alert('创建会议失败，请检查所填信息');window.location.href='createandrelease.jsp';</script>");
-	
-	    }
-	 } 
+	   
+	 }
+	 catch(Exception e){
+		 System.out.println("创建会议失败，请检查所填信息");
+			PrintWriter out=response.getWriter();
+			out.print("<script language='javascript'>alert('创建会议失败，请检查所填信息');window.location.href='createandrelease.jsp';</script>");
+		
+	 }
+	// } 
  }
  public void ReleaseMeeting(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException{
-	 Meeting m=(Meeting) request.getAttribute("meetingname");
-	 if(service.SFindMeeting(m)==null) {
-		 CreateMeeting(request, response);
-	 }
+	 //Meeting m=(Meeting) request.getAttribute("meetingname");
+	 //if(service.SFindMeeting(m)==null) 
+		// CreateMeeting(request, response);
+	 m.setMid(3);
+	 
 	 if(service.SReleaseMeeting(m)) {
 		 String str_text="会议发布成功！";
  		 String str_title="已发布";
  		 JOptionPane.showMessageDialog(null, str_text, str_title, JOptionPane.PLAIN_MESSAGE);
- 		 response.sendRedirect("/html/center.html");
+ 		request.getRequestDispatcher("jsp/center.jsp").forward(request, response);
 	 }else {
 		 System.out.println("会议发布异常！");
 	 }
