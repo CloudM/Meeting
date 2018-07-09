@@ -99,12 +99,14 @@ public class MeetingAction extends HttpServlet {
  }
  public void ReleaseMeeting(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException{
 	 Meeting m=(Meeting) request.getAttribute("meetingname");
-	 CreateMeeting(request, response);
+	 if(service.SFindMeeting(m)==null) {
+		 CreateMeeting(request, response);
+	 }
 	 if(service.SReleaseMeeting(m)) {
 		 String str_text="会议发布成功！";
  		 String str_title="已发布";
  		 JOptionPane.showMessageDialog(null, str_text, str_title, JOptionPane.PLAIN_MESSAGE);
- 		 response.sendRedirect("/回头ml/center.html");
+ 		 response.sendRedirect("/html/center.html");
 	 }else {
 		 System.out.println("会议发布异常！");
 	 }
