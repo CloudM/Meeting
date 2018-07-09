@@ -21,23 +21,14 @@ public class MeetingAction extends HttpServlet {
 	public MeetingAction(){
 		super();
 	}
- public void Service(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException{
+	Meeting m=new Meeting();
+ public void doGet(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException{
 	 response.setContentType("text/html;charset=UTF-8");
- 	String name = request.getParameter("btnType");
- 	if(name.equals("create")) {
- 		CreateMeeting(request,response);
- 	}
- 	else if(name.equals("release")) {
- 		ReleaseMeeting(request,response);
- 	}
- 
- }
- public void CreateMeeting(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
 	 User user = (User)request.getAttribute("User");
-	 Meeting m=new Meeting();
+	 
 	 m.setMname(request.getParameter("name"));
 	 m.setMeetingStatus(1);
-	 m.setUserid(user.getUid());
+	 m.setUserid(1);
 	 m.setHost(request.getParameter("host"));
 	 m.setDescribe(request.getParameter("introduction"));
 	 m.setGuest(request.getParameter("guest"));
@@ -69,6 +60,19 @@ public class MeetingAction extends HttpServlet {
     else if(request.getParameter("type")=="else") {
 	     m.setTypeid(8);
     }
+	 String create = request.getParameter("create");
+	 String release = request.getParameter("release");
+ 	if(create!=null) {
+ 		CreateMeeting(request,response);
+ 	}
+ 	else if(release!=null) {
+ 	ReleaseMeeting(request,response);
+ 	}
+ 
+}
+ 
+ public void CreateMeeting(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
+	
 	if(service.SFindMeeting(m) != null) {
 		 if(service.SUpdateMeeting(m)==true) {
 			 System.out.println("修改会议成功");

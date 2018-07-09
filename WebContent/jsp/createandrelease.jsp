@@ -84,7 +84,7 @@
 					<br>
 					<![endif]-->
 					<div class="modal-body">
-						<form class="form-inline" role="form" action="${pageContext.request.contextPath}/CreateAndReleaseMeeting" method="post">
+						<form class="form-inline" role="form" action="${pageContext.request.contextPath}/CreateAndReleaseMeeting?doPost" method="Get">
 						<div class="form-group">
 							<label class="reginfor">会议名称</label>
 							<input type="text" class="form-control" id="inputtext" name="name">
@@ -147,19 +147,22 @@
 							<textarea rows="5" class="form-control" cols="70" name="remarks"></textarea>
 							<i class="fa fa-user"></i>
 						</div>
+						<div class="modal-footer">
+						
+				<input type="submit"  name="create"   value="创建会议">
+				<input type="submit"  name="release"   value="发布会议">
+                
+				
+                </div>
+						</form>
 					</div>
 				</div>
 				
 					
 				</div>
 				
-				<div class="modal-footer">
-				<input type="button"  btnType="create"  onClick="document.getElementById('btnType').value=this.btnType;this.form.submit()" value="创建会议">
-				<input type="button"  btnType="release"  onClick="document.getElementById('btnType').value=this.btnType;this.form.submit()" value="发布会议">
-                <input type="hidden" id="btnType" name="btnType">
 				
-            </div>
-            </form>
+            
 			</div>
 			
 		</div>
