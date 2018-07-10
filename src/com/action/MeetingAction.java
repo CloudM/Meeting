@@ -28,12 +28,12 @@ public class MeetingAction extends HttpServlet {
 	
 	//new a meeting outside the functions
 	Meeting m=new Meeting();
- public void doGet(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException{
+ public void doPost(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException{
 	 response.setContentType("text/html;charset=UTF-8");
 	 User user = (User)request.getAttribute("User");
 	 
 	 //get all cookies and their values to find the cookie I need here through the cookie key
-	 /*Cookie[] cookies=request.getCookies();
+	 Cookie[] cookies=request.getCookies();
 	 String sessionid=null,meetingid=null;
 	  if(cookies!=null){
 	       for(int i=0;i<cookies.length;i++) {
@@ -44,12 +44,16 @@ public class MeetingAction extends HttpServlet {
 	                  // sessionid=cookies[i].getValue();
 	              // }
 	             }   
-	         }*/
-	      //HttpSession session=request.getSession(false);   
-	      //HttpSession sess = session.getSessionContext().getSession(sid); 
+	         }
+	  //get the session with the user entity who has login
+	      HttpSession session=request.getSession(false);   
+	      HttpSession sess = session.getSessionContext().getSession(sessionid); 
+	      User user1=(User) session.getAttribute("User");
+	      
 	 m.setMname(request.getParameter("name"));
 	 m.setMeetingStatus(1);
-	 m.setUserid(user.getUid());
+	 //get the userid from the user entity
+	 m.setUserid(user1.getUid());
 	 m.setHost(request.getParameter("host"));
 	 m.setDescribe(request.getParameter("introduction"));
 	 m.setGuest(request.getParameter("guest"));

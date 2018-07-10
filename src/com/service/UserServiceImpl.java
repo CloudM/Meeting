@@ -148,8 +148,38 @@ public class UserServiceImpl implements UserService {
 					u.setPhotoUrl(rs.getString(7));
 					u.setPhoneNumber(rs.getString(8));
 					u.setJob(rs.getString(9));
-					u.setHobby(rs.getString(10));
-					u.setBirthday(rs.getString(11));
+					u.setCity(rs.getString(10));
+					u.setHobby(rs.getString(11));
+					u.setBirthday(rs.getString(12));
+					u.setMotto(rs.getString(13));
+				}
+			}
+			rs.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return u;
+	}
+	
+	public User SgetUserByEmail(String Email) {
+		User u = new User();
+		try {
+			ResultSet rs = dao.haveRegister(Email);
+			if(rs != null) {
+				while(rs.next()) {
+					u.setUid(rs.getInt(1));
+					u.setUname(rs.getString(2));
+					u.setUpwd(rs.getString(3));
+					u.setUEmail(rs.getString(4));
+					u.setSecCode(rs.getInt(5));
+					u.setSex(rs.getString(6));
+					u.setPhotoUrl(rs.getString(7));
+					u.setPhoneNumber(rs.getString(8));
+					u.setJob(rs.getString(9));
+					u.setCity(rs.getString(10));
+					u.setHobby(rs.getString(11));
+					u.setBirthday(rs.getString(12));
+					u.setMotto(rs.getString(13));
 				}
 			}
 			rs.close();

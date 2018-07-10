@@ -46,10 +46,11 @@ public class LoginAndRegister extends HttpServlet {
     		//通知用户登录成功
     		System.out.println("登录成功");
     		
-    		/*
+    		User user=service.SgetUserByEmail(request.getParameter("email"));
+    		
     		//create a seesion and set the value of parameter
     		HttpSession session= request.getSession();
-    		session.setAttribute("User", u);
+    		session.setAttribute("User", user);
     		System.out.println(session.getId());
     		String sessionid=session.getId();
     		//create a cookie to save the seesionid of the session for searching it later
@@ -58,10 +59,10 @@ public class LoginAndRegister extends HttpServlet {
     		//if cookie is banned,then use redirectUrl
     		String url="/com.action/LoginAndRegister";
     		String newUrl=response.encodeRedirectUrl(url);
-    		System.out.println(newUrl);*/
+    		System.out.println(newUrl);
     		
     		
-    		request.setAttribute("User", u);
+    		//request.setAttribute("User", u);
     		//User user = (User)request.getAttribute("User");***在其它.java文件中用本行代码获取存入的user对象信息。
     		request.getRequestDispatcher("jsp/center.jsp").forward(request, response);
     	} else {

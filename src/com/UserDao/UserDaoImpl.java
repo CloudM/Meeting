@@ -46,7 +46,7 @@ public class UserDaoImpl extends DBDao implements UserDao{
 
 	
 	public ResultSet getUser(int uid) {
-		String sql = "SELECT * FROM User WHERE UserID = ?";
+		String sql = "SELECT * FROM userlogin WHERE UserID = ?";
 		Object[] obs = {uid};
 		ResultSet rs = ExecuteQuery(sql, obs);
 		return rs;

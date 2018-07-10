@@ -10,4 +10,5 @@ public interface UserService {
 	public boolean ShaveRegister(String email);
 	public boolean SResetUser(User u);
 	public User SgetUser(int i);
+	public User SgetUserByEmail(String Email);
 }

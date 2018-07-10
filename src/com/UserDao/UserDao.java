@@ -1,5 +1,4 @@
 package com.UserDao;
-/////
 import java.sql.ResultSet;
 
 import com.entity.User;
@@ -12,4 +11,5 @@ public interface UserDao {
 	public int resetUser(User u);
 	public ResultSet getUser(int uid);
 }
+
 

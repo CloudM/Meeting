@@ -84,7 +84,7 @@
 					<br>
 					<![endif]-->
 					<div class="modal-body">
-						<form class="form-inline" role="form" action="${pageContext.request.contextPath}/CreateAndReleaseMeeting?doPost" method="Get">
+						<form class="form-inline" role="form" action="${pageContext.request.contextPath}/CreateAndReleaseMeeting?doPost" method="Post">
 						<div class="form-group">
 							<label class="reginfor">会议名称</label>
 							<input type="text" class="form-control" id="inputtext" name="name">

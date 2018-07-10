@@ -10,8 +10,10 @@ public class User {
 	private String photoUrl;
 	private String phoneNumber;
 	private String job;
+	private String city;
 	private String hobby;
 	private String birthday;
+	private String motto;
 	
 	public int getUid() {
 		return uid;
@@ -67,6 +69,12 @@ public class User {
 	public void setJob(String job) {
 		this.job = job;
 	}
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
 	public String getHobby() {
 		return hobby;
 	}
@@ -78,5 +86,11 @@ public class User {
 	}
 	public void setBirthday(String birthday) {
 		this.birthday = birthday;
+	}
+	public String getMotto() {
+		return motto;
+	}
+	public void setMotto(String motto) {
+		this.motto = motto;
 	}
 }
