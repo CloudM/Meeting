@@ -4,6 +4,7 @@ package com.action;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import com.function.Cookies;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
@@ -16,6 +17,7 @@ import javax.swing.JOptionPane;
 
 import com.entity.Meeting;
 import com.entity.User;
+import com.function.SessionContext;
 import com.service.MeetingService;
 import com.service.MeetingServiceImpl;
 
@@ -34,7 +36,7 @@ public class MeetingAction extends HttpServlet {
 	 
 	 //get all cookies and their values to find the cookie I need here through the cookie key
 	 Cookie[] cookies=request.getCookies();
-	 String sessionid=null,meetingid=null;
+	/* String sessionid=null,meetingid=null;
 	  if(cookies!=null){
 	       for(int i=0;i<cookies.length;i++) {
 	              if(cookies[i].getName().equals("SessionId")){
@@ -48,8 +50,12 @@ public class MeetingAction extends HttpServlet {
 	  //get the session with the user entity who has login
 	      HttpSession session=request.getSession(false);   
 	      HttpSession sess = session.getSessionContext().getSession(sessionid); 
-	      User user1=(User) session.getAttribute("User");
-	      
+	      User user1=(User) session.getAttribute("User");*/
+	    Cookies c=new Cookies();
+	    String sessionid= c.findCookie("SessionId",cookies);
+	    SessionContext myc= SessionContext.getInstance();  
+	    HttpSession sess = myc.getSession(sessionid);  
+	    User user1=(User) sess.getAttribute("User");  
 	 m.setMname(request.getParameter("name"));
 	 m.setMeetingStatus(1);
 	 //get the userid from the user entity
@@ -94,7 +100,9 @@ public class MeetingAction extends HttpServlet {
  
 }
  
- public void CreateMeeting(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
+
+
+public void CreateMeeting(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
 	
 	//if(service.SFindMeeting(m) != null) {
 		// if(service.SUpdateMeeting(m)==true) {

@@ -27,4 +27,8 @@
     <servlet-name>CreateAndReleaseMeeting</servlet-name>
     <url-pattern>/CreateAndReleaseMeeting</url-pattern>
   </servlet-mapping>
+  
+      <listener>  
+        <listener-class>com.function.Sessions</listener-class>  
+    </listener>  
 </web-app>
