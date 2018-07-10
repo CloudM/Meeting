@@ -5,10 +5,14 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.swing.JOptionPane;
+
+//import org.apache.tomcat.util.http.parser.Cookie;
 
 import com.entity.Meeting;
 import com.entity.User;
@@ -21,14 +25,31 @@ public class MeetingAction extends HttpServlet {
 	public MeetingAction(){
 		super();
 	}
+	
+	//new a meeting outside the functions
 	Meeting m=new Meeting();
  public void doGet(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException{
 	 response.setContentType("text/html;charset=UTF-8");
 	 User user = (User)request.getAttribute("User");
 	 
+	 //get all cookies and their values to find the cookie I need here through the cookie key
+	 /*Cookie[] cookies=request.getCookies();
+	 String sessionid=null,meetingid=null;
+	  if(cookies!=null){
+	       for(int i=0;i<cookies.length;i++) {
+	              if(cookies[i].getName().equals("SessionId")){
+	                	 sessionid=cookies[i].getValue();
+	                 }
+	              //if(cookies[i].getName().equals("meetingid")){
+	                  // sessionid=cookies[i].getValue();
+	              // }
+	             }   
+	         }*/
+	      //HttpSession session=request.getSession(false);   
+	      //HttpSession sess = session.getSessionContext().getSession(sid); 
 	 m.setMname(request.getParameter("name"));
 	 m.setMeetingStatus(1);
-	 m.setUserid(1);
+	 m.setUserid(user.getUid());
 	 m.setHost(request.getParameter("host"));
 	 m.setDescribe(request.getParameter("introduction"));
 	 m.setGuest(request.getParameter("guest"));
