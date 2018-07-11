@@ -37,10 +37,10 @@ public class UserDaoImpl extends DBDao implements UserDao{
 
 	
 	public int resetUser(User u) {
-		String sql = "UPDATE User SET UserName = ?, Password = ?, Sex = ?, PhotoUrl = ?, "
-				+ "PhoneNumber = ?, Job = ?, Hobby = ?, Birtuday = ? WHERE UserID = ?";
-		Object[] obs={u.getUname(), u.getUpwd(), u.getSex(), u.getPhotoUrl(), 
-				u.getPhoneNumber(), u.getJob(), u.getHobby(), u.getBirthday(), u.getUid()};
+		String sql = "UPDATE Userlogin SET UserName = ?, Password = ?, sex = ?, phoneNumber = ?, "
+				+ "job = ?, position = ?, hobby = ?, birthday = ?, motto = ? WHERE UserID = ?";
+		Object[] obs={u.getUname(), u.getUpwd(), u.getSex(), u.getPhoneNumber(), 
+				u.getJob(), u.getCity(), u.getHobby(), u.getBirthday(), u.getMotto(), u.getUid()};
 		return ExecuteUpdate(sql, obs);
 	}
 

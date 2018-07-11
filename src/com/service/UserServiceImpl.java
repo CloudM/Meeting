@@ -16,6 +16,7 @@ import java.util.Properties;
 
 public class UserServiceImpl implements UserService {
 	
+
 	UserDao dao= new UserDaoImpl();
 	
     public void sendEmail(String myEmail, String myPassword, String receiveMail, String letter) throws Exception {
@@ -144,14 +145,14 @@ public class UserServiceImpl implements UserService {
 					u.setUpwd(rs.getString(3));
 					u.setUEmail(rs.getString(4));
 					u.setSecCode(rs.getInt(5));
-					u.setSex(rs.getString(6));
-					u.setPhotoUrl(rs.getString(7));
-					u.setPhoneNumber(rs.getString(8));
-					u.setJob(rs.getString(9));
-					u.setCity(rs.getString(10));
-					u.setHobby(rs.getString(11));
-					u.setBirthday(rs.getString(12));
-					u.setMotto(rs.getString(13));
+					u.setSex(rs.getString(9));
+					u.setPhotoUrl(rs.getString(10));
+					u.setPhoneNumber(rs.getString(11));
+					u.setJob(rs.getString(12));
+					u.setCity(rs.getString(13));
+					u.setHobby(rs.getString(14));
+					u.setBirthday(rs.getString(15));
+					u.setMotto(rs.getString(16));
 				}
 			}
 			rs.close();
@@ -172,14 +173,14 @@ public class UserServiceImpl implements UserService {
 					u.setUpwd(rs.getString(3));
 					u.setUEmail(rs.getString(4));
 					u.setSecCode(rs.getInt(5));
-					u.setSex(rs.getString(6));
-					u.setPhotoUrl(rs.getString(7));
-					u.setPhoneNumber(rs.getString(8));
-					u.setJob(rs.getString(9));
-					u.setCity(rs.getString(10));
-					u.setHobby(rs.getString(11));
-					u.setBirthday(rs.getString(12));
-					u.setMotto(rs.getString(13));
+					u.setSex(rs.getString(9));
+					u.setPhotoUrl(rs.getString(10));
+					u.setPhoneNumber(rs.getString(11));
+					u.setJob(rs.getString(12));
+					u.setCity(rs.getString(13));
+					u.setHobby(rs.getString(14));
+					u.setBirthday(rs.getString(15));
+					u.setMotto(rs.getString(16));
 				}
 			}
 			rs.close();

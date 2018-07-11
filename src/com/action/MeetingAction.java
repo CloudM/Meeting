@@ -36,7 +36,10 @@ public class MeetingAction extends HttpServlet {
 	 
 	 //get all cookies and their values to find the cookie I need here through the cookie key
 	 Cookie[] cookies=request.getCookies();
-	/* String sessionid=null,meetingid=null;
+	
+	 
+	 
+	 /* String sessionid=null,meetingid=null;
 	  if(cookies!=null){
 	       for(int i=0;i<cookies.length;i++) {
 	              if(cookies[i].getName().equals("SessionId")){
@@ -51,11 +54,16 @@ public class MeetingAction extends HttpServlet {
 	      HttpSession session=request.getSession(false);   
 	      HttpSession sess = session.getSessionContext().getSession(sessionid); 
 	      User user1=(User) session.getAttribute("User");*/
+	    
+	 
+	    //find the session through sessionid which is saved in cookie
 	    Cookies c=new Cookies();
 	    String sessionid= c.findCookie("SessionId",cookies);
 	    SessionContext myc= SessionContext.getInstance();  
 	    HttpSession sess = myc.getSession(sessionid);  
 	    User user1=(User) sess.getAttribute("User");  
+	    
+	    //assignment of meeting entity
 	 m.setMname(request.getParameter("name"));
 	 m.setMeetingStatus(1);
 	 //get the userid from the user entity
@@ -89,6 +97,8 @@ public class MeetingAction extends HttpServlet {
     else if(request.getParameter("type").equals("else")) {
 	     m.setTypeid(7);
     }
+	 
+	 //judge which button the user click and turn to the right function
 	 String create = request.getParameter("create");
 	 String release = request.getParameter("release");
  	if(create!=null) {
@@ -117,6 +127,7 @@ public void CreateMeeting(HttpServletRequest request,HttpServletResponse respons
 	//else {
 	 try {
 		 //service.SAddMeeting(m);
+		 //add meeting
 	    if(service.SAddMeeting(m)==true){
 		  System.out.println("创建会议成功");
 		  PrintWriter out=response.getWriter();

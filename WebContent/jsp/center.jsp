@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" import="com.entity.User" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -6,11 +6,10 @@
     <meta charset="UTF-8">
     <title>个人中心</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link href="./css/public.css" rel="stylesheet" type="text/css"> 
-    <link href="./css/center.css" rel="stylesheet" type="text/css">   
-  
-     <!-- 新 Bootstrap 核心 CSS 文件 -->
+   <!-- 新 Bootstrap 核心 CSS 文件 -->
     <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">  
+    <link href="./css/public.css" rel="stylesheet" type="text/css"> 
+    <link href="./css/center.css" rel="stylesheet" type="text/css">      
 </head>
 
 <body>
@@ -64,14 +63,13 @@
     
     <div class="user-info-right">
         <h3 class="user-name clearfix">
-            <span>VorSonnenaufgang</span>
+            <span>${User.uname}</span>
         </h3>
         <!--25-->
         <p class="about-info">
-        <span>男</span>
-        <span>湖北</span>             
-        <span>武汉市</span>
-        <span>学生</span>
+        <span>${User.sex}</span>
+        <span>${User.city}</span>
+        <span>${User.job}</span>
         </p>
         </div>
 
@@ -117,39 +115,106 @@
             </div>
             <div class="modal-body">
 
-            <form class="form-horizontal">
+            <form class="form-horizontal" action="${pageContext.request.contextPath}/ResetUserServlet" method="post">
                 <div class="form-group">
                     <label class="reginfo">用户名</label>
-                    <input type="email" class="form-control1" id="inputEmail3" placeholder="输入用户名">
+                    <input name="userName" type="email" class="form-control1" id="inputEmail3" value=${User.uname}>
                     <i class="fa fa-user"></i>
                 </div>
+                <%  
+                	User user = (User)request.getSession().getAttribute("User");
+                    String year = null;
+                    String month = null;
+                    String date = null;
+	                if(user.getBirthday() != null){
+	                	String[] birthday = user.getBirthday().split(" ");
+	                	if(birthday.length == 3) {
+	                    	year = birthday[0];
+	                    	month = birthday[1];
+	                    	date = birthday[2];
+	                    }
+	                }
+                	request.getSession().setAttribute("year", year);
+                	request.getSession().setAttribute("month", month);
+                	request.getSession().setAttribute("date", date);
+                %>
+                <div class="form-group">
+   
+                <label class="reginfo">生日</label>
+			        <div class="group birth">
+			        <div class="txt">
+			            <div class="year sel">
+			                <input name="year" type="text" placeholder="请选择年" readOnly data-id='1' value=${year}>
+			                <ul>
+			                </ul>
+			            </div>
+			            <div class="mon sel">
+			                <input name="month" type="text" placeholder="请选择月" readOnly data-id='1' value=${month}>
+			                <ul>
+			                </ul>
+			            </div>
+			            <div class="date sel">
+			                <input name="date" type="text" placeholder="请选择日" readOnly data-id='1' value=${date}>
+			                <ul>
+			                </ul>
+			            </div>
+			        </div>
+			        <p></p>
+			    </div>
+                     </div>
+                
+                
+                <div class="form-group">
+                    <label class="reginfo">密码</label>
+                    <input name="upwd" type="text" class="form-control1" id="inputEmail3" value=${User.upwd}>
+                    <i class="fa fa-user"></i>
+                </div>
+                
+                <div class="form-group">
+                    <label class="reginfo">性别</label>
+                    <input name="sex" type="text" class="form-control1" id="inputEmail3" value=${User.sex}>
+                    <i class="fa fa-user"></i>
+                </div>
+                
+                <div class="form-group">
+                    <label class="reginfo">电话号码</label>
+                    <input name="phoneNumber" type="text" class="form-control1" id="inputEmail3" value=${User.phoneNumber}>
+                    <i class="fa fa-user"></i>
+                </div>
+                
                 <div class="form-group">
                     <label class="reginfo">职位</label>
-                    <input type="email" class="form-control1" id="inputEmail3" placeholder="输入职位">
+                    <input name="job" type="text" class="form-control1" id="inputEmail3" value=${User.job}>
                     <i class="fa fa-user"></i>
                 </div>
                     
                 <div class="form-group">
                     <label class="reginfo">城市</label>
-                    <input type="password" class="form-control1" id="inputPassword3" placeholder="输入密码">
+                    <input name="city" type="text" class="form-control1" id="inputPassword3" value=${User.city}>
                     <i class="fa fa-lock"></i>
-                    <a href="#" class="fa fa-question-circle"></a>
                 </div>
                     
                 <div class="form-group">
-                    <label class="reginfo">性别</label>
-                    <input type="password" class="form-control1" id="inputPassword3" placeholder="确认密码">
-                    <i class="fa fa-lock"></i>
-                    <a href="#" class="fa fa-question-circle"></a>
+                    <label class="reginfo">爱好</label>
+                    <input name="hobby" type="text" class="form-control1" id="inputEmail3" value=${User.hobby}>
+                    <i class="fa fa-user"></i>
+                </div>
+                
+                <div class="form-group">
+                    <label class="reginfo">座右铭</label>
+                    <input name="Motto" type="text" class="form-control1" id="inputEmail3" value=${User.motto}>
+                    <i class="fa fa-user"></i>
+                </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="submit"  class="btn btn-primary">提交</button>
                 </div>
             </form>
         
             </div>
             
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary">提交</button>
-            </div>
+            
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->
 </div>
@@ -160,32 +225,47 @@
                     <div class="info-wapper">
                         <div class="info-box clearfix">
                             <label class="pull-left">用户名</label>
-                            <div class="pull-left">VorSonnenaufgang</div>
+                            <div class="pull-left">${User.uname}</div>
                         </div>
 
                         <div class="info-box clearfix">
                             <label class="pull-left">邮箱</label>
-                            <div class="pull-left">875503176@qq.com</div>
+                            <div class="pull-left">${User.UEmail}</div>
                         </div>
-                    
+                        
+                         <div class="info-box clearfix">
+                            <label class="pull-left">生日</label>
+                            <div class="pull-left">${User.birthday}</div>
+                        </div>
+                        
+                        <div class="info-box clearfix">
+                            <label class="pull-left">性别</label>
+                            <div class="pull-left">${User.sex}</div>
+                        </div>
+                        
+                        <div class="info-box clearfix">
+                            <label class="pull-left">电话号码</label>
+                            <div class="pull-left">${User.phoneNumber}</div>
+                        </div>
+                        
                         <div class="info-box clearfix">
                             <label class="pull-left">职位</label>
-                            <div class="pull-left">学生</div>
+                            <div class="pull-left">${User.job}</div>
                         </div>
                     
                         <div class="info-box clearfix">
                             <label class="pull-left">城市</label>
-                            <div class="pull-left">武汉</div>
-                        </div>
-
-                        <div class="info-box clearfix">
-                            <label class="pull-left">性别</label>
-                            <div class="pull-left">男</div>
+                            <div class="pull-left">${User.city}</div>
                         </div>
             
                         <div class="info-box clearfix">
-                            <label class="pull-left">个性签名</label>
-                            <div class="pull-left">Carpe diem.</div>
+                            <label class="pull-left">爱好</label>
+                            <div class="pull-left">${User.hobby}</div>
+                        </div>
+                        
+                        <div class="info-box clearfix">
+                            <label class="pull-left">座右铭</label>
+                            <div class="pull-left">${User.motto}</div>
                         </div>
                     
                     </div>
@@ -193,31 +273,107 @@
                 </div>
                 
                 <div class="tab-pane fade" id="tom">
-                    <p>iOS 是一个由苹果公司开发和发布的手机操作系统。最初是于 2007 年首次发布 iPhone、iPod Touch 和 Apple
-                    TV。iOS 派生自 OS X，它们共享 Darwin 基础。OS X 操作系统是用在苹果电脑上，iOS 是苹果的移动版本。</p>
-                </div>
-                
-                <div class="tab-pane fade" id="alm">
-                    <p>iOS 是一个由苹果公司开发和发布的手机操作系统。最初是于 2007 年首次发布 iPhone、iPod Touch 和 Apple
-                    TV。iOS 派生自 OS X，它们共享 Darwin 基础。OS X 操作系统是用在苹果电脑上，iOS 是苹果的移动版本。</p>
-                </div>
+                    <div class="meeting">  
+                       <ul class="meet-list">  
+                         <li>  
+                           <img src="./images/logo1.png" />  
+                           <h3>Headline</h3>  
+                           <p>Lorem ipsum dolor sit amet...</p>  
+                       </li>  
 
-                <div class="tab-pane fade" id="orm">
-                    <p>iOS 是一个由苹果公司开发和发布的手机操作系统。最初是于 2007 年首次发布 iPhone、iPod Touch 和 Apple
-                    TV。iOS 派生自 OS X，它们共享 Darwin 基础。OS X 操作系统是用在苹果电脑上，iOS 是苹果的移动版本。</p>
-                </div>
+                       <li>  
+                           <img src="./images/logo1.png" />  
+                           <h3>Headline</h3>  
+                           <p>Lorem ipsum dolor sit amet...</p>  
+                       </li>  
 
-                <div class="tab-pane fade" id="card">
-                    <p>iOS 是一个由苹果公司开发和发布的手机操作系统。最初是于 2007 年首次发布 iPhone、iPod Touch 和 Apple
-                    TV。iOS 派生自 OS X，它们共享 Darwin 基础。OS X 操作系统是用在苹果电脑上，iOS 是苹果的移动版本。</p>
-                </div>
+                       <li>  
+                           <img src="./images/logo1.png" />  
+                           <h3>Headline</h3>  
+                           <p>Lorem ipsum dolor sit amet...</p>  
+                       </li>  
 
-                <div class="tab-pane fade" id="mess">
-                    <p>iOS 是一个由苹果公司开发和发布的手机操作系统。最初是于 2007 年首次发布 iPhone、iPod Touch 和 Apple
-                    TV。iOS 派生自 OS X，它们共享 Darwin 基础。OS X 操作系统是用在苹果电脑上，iOS 是苹果的移动版本。</p>
-                </div>
+                       <li>  
+                           <img src="./images/logo1.png" />  
+                           <h3>Headline</h3>  
+                           <p>Lorem ipsum dolor sit amet...</p>  
+                       </li>  
+                   </ul>  
+               </div> 
+           </div>
 
-            </div>
+           <div class="tab-pane fade" id="alm">
+            <div class="meeting">  
+               <ul class="meet-list">  
+                 <li>  
+                   <img src="./images/logo1.png" />  
+                   <h3>Headline</h3>  
+                   <p>Lorem ipsum dolor sit amet...</p>  
+               </li>  
+
+               <li>  
+                   <img src="./images/logo1.png" />  
+                   <h3>Headline</h3>  
+                   <p>Lorem ipsum dolor sit amet...</p>  
+               </li>  
+
+               <li>  
+                   <img src="./images/logo1.png" />  
+                   <h3>Headline</h3>  
+                   <p>Lorem ipsum dolor sit amet...</p>  
+               </li>  
+
+               <li>  
+                   <img src="./images/logo1.png" />  
+                   <h3>Headline</h3>  
+                   <p>Lorem ipsum dolor sit amet...</p>  
+                   
+               </li>  
+           </ul>  
+       </div> 
+   </div>
+
+   <div class="tab-pane fade" id="orm">
+    <div class="meeting">  
+       <ul class="meet-list">  
+         <li>  
+           <img src="./images/logo1.png" />  
+           <h3>Headline</h3>  
+           <p>Lorem ipsum dolor sit amet...</p>  
+       </li>  
+
+       <li>  
+           <img src="./images/logo1.png" />  
+           <h3>Headline</h3>  
+           <p>Lorem ipsum dolor sit amet...</p>  
+       </li>  
+
+       <li>  
+           <img src="./images/logo1.png" />  
+           <h3>Headline</h3>  
+           <p>Lorem ipsum dolor sit amet...</p>  
+       </li>  
+
+       <li>  
+           <img src="./images/logo1.png" />  
+           <h3>Headline</h3>  
+           <p>Lorem ipsum dolor sit amet...</p>  
+       </li>  
+   </ul>  
+</div> 
+</div>
+
+<div class="tab-pane fade" id="card">
+    <p>iOS 是一个由苹果公司开发和发布的手机操作系统。最初是于 2007 年首次发布 iPhone、iPod Touch 和 Apple
+    TV。iOS 派生自 OS X，它们共享 Darwin 基础。OS X 操作系统是用在苹果电脑上，iOS 是苹果的移动版本。</p>
+</div>
+
+<div class="tab-pane fade" id="mess">
+    <p>iOS 是一个由苹果公司开发和发布的手机操作系统。最初是于 2007 年首次发布 iPhone、iPod Touch 和 Apple
+    TV。iOS 派生自 OS X，它们共享 Darwin 基础。OS X 操作系统是用在苹果电脑上，iOS 是苹果的移动版本。</p>
+</div>
+
+</div>
 
 <script>
     $(function () {
@@ -240,6 +396,10 @@
  
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="./js/birth.js"></script>
+
+
 
 </body>
 </html>
