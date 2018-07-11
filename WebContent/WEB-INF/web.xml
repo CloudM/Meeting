@@ -35,6 +35,35 @@
     <servlet-name>ApplyAndCancelMeeting</servlet-name>
     <url-pattern>/ApplyAndCancelMeeting</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ShowApply</servlet-name>
+    <servlet-class>com.action.ShowApply</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowApply</servlet-name>
+    <url-pattern>/ShowApply</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>HandleApply</servlet-name>
+    <servlet-class>com.action.HandleApply</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HandleApply</servlet-name>
+    <url-pattern>/HandleApply</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <servlet-name>ResetUserServlet</servlet-name>
+    <servlet-class>com.action.ResetServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ResetUserServlet</servlet-name>
+    <url-pattern>/ResetUserServlet</url-pattern>
+  </servlet-mapping>
+  
       <listener>  
         <listener-class>com.function.Sessions</listener-class>  
     </listener>  

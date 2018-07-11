@@ -76,7 +76,7 @@
 			<div class="modelr-dialog">
 				<div class="modelr-content">
 					<div class="modelr-header">
-						<button type="button" class="close" onclick="{location.href='center.html'}"><font color="#DC143C"><h1>&times;</h1></font></button>
+						<button type="button" class="close" onclick="history.go(-1);"><font color="#DC143C"><h1>&times;</h1></font></button>
 						<h2 class="modal-title" id="releaseModalLabel" align="center">请填写会议信息</h2>
 					</div>
 					<hr>

@@ -47,6 +47,13 @@ public class MeetingDaoImpl extends DBDao implements  MeetingDao{
 		return ExecuteUpdate(sql, obs);
 	
 	}
-	
+	//find out all meetings with their different status
+	//return reslutset
+	public ResultSet hasReleasedMeeting(int userid,int status) {
+		String sql = "select * from meeting where UserID = ? and MeetingStateID = ?";
+		Object[] obs = {userid,status};
+		return ExecuteQuery(sql,obs);
+	}
+
 	
 }

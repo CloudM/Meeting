@@ -1,6 +1,9 @@
 //KarenZhu
 package com.service;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.UserDao.MeetingDao;
 import com.UserDao.MeetingDaoImpl;
@@ -76,5 +79,28 @@ public class MeetingServiceImpl implements MeetingService{
 		}
 	
 	}
+	
+	public List<Meeting> ShasReleasedMeeting(int userid,int status) {
+		List<Meeting> M = new ArrayList<>();
+		ResultSet rs = dao.hasReleasedMeeting(userid,status);
+		if(rs!=null) {
+		try {
+			while(rs.next()) {
+				Meeting m=new Meeting();
+				m.setMid(rs.getInt(1));
+				m.setStartTime(rs.getString(5));
+				m.setMname(rs.getString(13));
+				m.setTypeid(rs.getInt(2));
+				m.setHost(rs.getString(14));
+				M.add(m);
+				}
+			} catch (SQLException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+			}
+		}
+		return M;
+	}
+
 
 }

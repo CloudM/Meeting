@@ -14,4 +14,6 @@ public ResultSet FindMeeting(Meeting m);
 public int ReleaseMeeting(Meeting m);
 //change the information of meeting
 public int UpdateMeeting(Meeting m);
+//find out all meetings with different status
+public ResultSet hasReleasedMeeting(int userid, int status);
 }

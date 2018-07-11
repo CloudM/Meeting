@@ -84,10 +84,10 @@
             <div class="leftnave">
             <ul class="nav nav-pills nav-stacked" id="naveul">
                 <li class="active" style="margin: 15px;"><a href="#info" data-toggle="tab">个人信息</a></li>
-                <li style="margin: 15px;"><a href="#tom" data-toggle="tab">待参加会议</a></li>
-                 <li style="margin: 15px;"><a href="jsp/createandrelease.jsp">创建会议</a></li>
+                <li style="margin: 15px;"><a href="#tom" data-toggle="tab">我发布的会议</a></li>
+                <li style="margin: 15px;"><a href="jsp/createandrelease.jsp">创建会议</a></li>
                 <li style="margin: 15px;"><a href="#alm" data-toggle="tab">已参加会议</a></li>
-                <li style="margin: 15px;"><a href="#orm" data-toggle="tab">我发布的会议</a></li>
+                <li style="margin: 15px;"><a href="#orm" data-toggle="tab">待参加的会议</a></li>
                 <li style="margin: 15px;"><a href="#card" data-toggle="tab">名片夹</a></li>
                 <li style="margin: 15px;"><a href="#mess" data-toggle="tab">消息中心</a></li>
             </ul>
@@ -398,8 +398,9 @@
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <script type="text/javascript" src="./js/birth.js"></script>
-
-
-
+<script type="text/javascript" src="./js/center.js">
+var Mlist=<%= session.getAttribute("Mlist") %>;
+var count=<%= session.getAttribute("count")%>;
+</script>
 </body>
 </html>
