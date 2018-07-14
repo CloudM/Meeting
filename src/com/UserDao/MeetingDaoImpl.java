@@ -24,10 +24,10 @@ public class MeetingDaoImpl extends DBDao implements  MeetingDao{
 	}
 	//search meeting according to mid with sql statement realization
 	//return resultset
-	public ResultSet FindMeeting(Meeting m){
+	public ResultSet FindMeeting(int mid){
 		
-		String sql="select * from meeting where Mid=?";
-		Object[]  obs= {m.getMid()};
+		String sql="select * from meeting where MeetingID=?";
+		Object[]  obs= {mid};
 		return ExecuteQuery(sql,obs);
 		
 		}
@@ -49,9 +49,9 @@ public class MeetingDaoImpl extends DBDao implements  MeetingDao{
 	}
 	//find out all meetings with their different status
 	//return reslutset
-	public ResultSet hasReleasedMeeting(int userid,int status) {
-		String sql = "select * from meeting where UserID = ? and MeetingStateID = ?";
-		Object[] obs = {userid,status};
+	public ResultSet hasReleasedMeeting(int userid,int status1,int status2) {
+		String sql = "select * from meeting where UserID = ? and (MeetingStateID = ? or MeetingStateID=?)";
+		Object[] obs = {userid,status1,status2};
 		return ExecuteQuery(sql,obs);
 	}
 

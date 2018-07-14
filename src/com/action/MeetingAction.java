@@ -35,7 +35,7 @@ public class MeetingAction extends HttpServlet {
 	 User user = (User)request.getAttribute("User");
 	 
 	 //get all cookies and their values to find the cookie I need here through the cookie key
-	 Cookie[] cookies=request.getCookies();
+	 //Cookie[] cookies=request.getCookies();
 	
 	 
 	 
@@ -57,17 +57,17 @@ public class MeetingAction extends HttpServlet {
 	    
 	 
 	    //find the session through sessionid which is saved in cookie
-	    Cookies c=new Cookies();
+	    /*Cookies c=new Cookies();
 	    String sessionid= c.findCookie("SessionId",cookies);
 	    SessionContext myc= SessionContext.getInstance();  
 	    HttpSession sess = myc.getSession(sessionid);  
-	    User user1=(User) sess.getAttribute("User");  
-	    
+	    User user1=(User) sess.getAttribute("User"); */ 
+	  
 	    //assignment of meeting entity
 	 m.setMname(request.getParameter("name"));
 	 m.setMeetingStatus(1);
 	 //get the userid from the user entity
-	 m.setUserid(user1.getUid());
+	 m.setUserid(user.getUid());
 	 m.setHost(request.getParameter("host"));
 	 m.setDescribe(request.getParameter("introduction"));
 	 m.setGuest(request.getParameter("guest"));

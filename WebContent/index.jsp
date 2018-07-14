@@ -11,6 +11,9 @@
     <link href="css/login.css" rel="stylesheet" type="text/css">  
      <!-- 新 Bootstrap 核心 CSS 文件 -->
     <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">  
+    <script type="text/javascript" src="js/Ajax.js"></script>
+    <script type="text/javascript" src="js/EmailCheck.js"></script>
+    
 </head>
 
 	<body>
@@ -46,7 +49,7 @@
 <div class="container">
         <div class="row">
             <div class="col-md-offset-3 col-md-6">
-                <form class="form-horizontal" action="${pageContext.request.contextPath}/LoginAndRegister?method=login" method="post">
+                <form class="form-horizontal" action="${pageContext.request.contextPath}/LoginAndRegister?mthod=login" method="post">
                     <span class="heading">用户登录</span>
                     
                     <div class="form-group">
@@ -95,15 +98,17 @@
             </div>
             <div class="modal-body">
 
-            <form class="form-horizontal" action="${pageContext.request.contextPath}/LoginAndRegister?method=register" method="post">
+            <form class="form-horizontal" action="${pageContext.request.contextPath}/LoginAndRegister?mthod=register2" method="post">
                 <div class="form-group">
                     <label class="reginfo">注册邮箱</label>
                     <input type="email" name="email" class="form-control1" id="inputEmail2" placeholder="输入邮箱地址">
                     <i class="fa fa-user"></i>
                 </div>
+                <span id="msg" class="check">注册邮箱检验</span>
+                
                 <div class="form-group">
                     <label class="reginfo">用户名</label>
-                    <input type="email" name="userName" class="form-control1" id="inputEmail3" placeholder="输入用户名">
+                    <input type="text" name="userName" class="form-control1" id="inputUserName2" placeholder="输入用户名">
                     <i class="fa fa-user"></i>
                 </div>
                     
@@ -122,11 +127,11 @@
                 </div>
                 <div class="form-group">
                     <label class="reginfo">验证码</label>
-                    <input type="password" class="form-control1" id="inputPassword3" placeholder="输入验证码">
+                    <input type="text" name="secCode" class="form-control1" id="inputPassword4" placeholder="输入验证码">
                     <i class="fa fa-lock"></i>
                     <a href="#" class="fa fa-question-circle"></a>
                 </div>
-                  <a class="test" href="#">发送验证码</a>
+                    <button type="button" onclick="sendSecCode()">发送验证码</button>
 	            <div class="modal-footer">
 	                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
 	                <button type="submit" class="btn btn-primary">提交</button>

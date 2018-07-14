@@ -101,7 +101,7 @@
 }
 
 .navbar-fixed-top ~ .content {
-   padding-top: 70px;
+ padding-top: 70px;
 }
 .navbar-fixed-bottom ~ .content {
   padding-bottom: 70px;
@@ -181,48 +181,106 @@
 }
 
 .meeting{  
-   margin: 60px 80px;  
- }  
-           
+    margin: 50px 60px;  
+}  
+
 .meet-list{  
-   list-style-type: none;  
-   width: 700px;  
- }  
-           
+    list-style-type: none;  
+    width: 700px;  
+}  
+
 .meet-list h3 {  
-   font: bold 20px/1.5 Helvetica, Verdana, sans-serif;  
- }  
-           
+    font: bold 20px/1.5 Helvetica, Verdana, sans-serif;  
+}  
+
 .meet-list li img {  
-   float: left;  
-   height: 100px;
-   width: 100px;
-   margin: 0 15px 0 0;  
- }  
-           
+    float: left;  
+    height: 100px;
+    width: 100px;
+    margin: 0 15px 0 0;  
+}  
+
 .meet-list li p {  
-   font: 200 12px/1.5 Georgia, Times New Roman, serif;  
- }  
-           
+    font: 200 12px/1.5 Georgia, Times New Roman, serif;  
+}  
+
 .meet-list li {  
-   padding: 10px;  
-   overflow: auto;  
- }  
-           
+    padding: 10px;  
+    overflow: auto;  
+    margin: 10px;
+}  
+
 .meet-list li:hover {  
-   background: #eee;  
-   cursor: pointer;  
- } 
+    background: #eee;  
+    cursor: pointer;  
+} 
 
 
+.card-area{  
+    margin: 60px 80px;  
+}  
 
- div.group {
+.card-list{  
+    list-style-type: none;  
+    width: 700px;  
+}  
+
+.card-list .leftpart{
+    width: 30%;
+    float: left;
+    font-size: 15px;
+}
+
+.card-list .rightpart{
+    width: 70%;
+    float: right;
+}   
+
+.card-list h3 {  
+    font: bold 20px/1.5 Helvetica, Verdana, sans-serif;  
+}  
+
+.card-list li .time-info {  
+    float: left;  
+    margin: 0 15px 0 0;  
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}  
+
+.card-list li p {  
+    font: 200 14px/1.5 Georgia, Times New Roman, serif;  
+    padding-top: 10px;
+}  
+
+.card-list li {  
+    padding: 10px;  
+    overflow: auto;  
+    border: 1px;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: #eee;
+    margin-bottom: 25px;
+    position: relative;
+}  
+
+.card-list li .name-info{
+    font-size: 18px;
+    margin: 10px;
+}           
+.card-list li:hover {  
+    background: #eee;  
+    cursor: pointer;  
+} 
+
+
+div.group {
     display: inline-block;
     margin-top: 8px;
     margin-left: 40px;
 }
- 
- 
+
+
 div.group div.txt {
     display: inline-block;
     vertical-align: top;
@@ -230,7 +288,7 @@ div.group div.txt {
     height: 25px;
     line-height: 28px;
 }
- 
+
 div.group div.txt input {
     width: 96%;
     padding-left: 2%;
@@ -241,14 +299,14 @@ div.group div.txt input {
     font-size: 14px;
     color: #333;
 }
- 
- 
+
+
 /* 生日样式 */
- 
+
 div.group.birth div.txt {
     width: 500px;
 }
- 
+
 div.group.birth div.txt div.sel {
     display: inline-block;
     width: 140px;
@@ -257,7 +315,7 @@ div.group.birth div.txt div.sel {
     margin-right: 10px;
     position: relative;
 }
- 
+
 div.group.birth div.txt div.sel input {
     padding-left: 3%;
     padding-right: 3%;
@@ -275,7 +333,7 @@ div.group.birth div.txt div.sel input:focus{
     font-size: 14px;
     color: #000;
 }
- 
+
 div.group.birth div.txt div.sel ul {
     height: 0px;
     position: absolute;
@@ -288,14 +346,15 @@ div.group.birth div.txt div.sel ul {
     overflow-y: scroll;
     padding-left: 4px;
 }
- 
+
 div.group.birth div.txt div.sel ul li {
     font-size: 12px;
     color: #666;
     cursor: default;
     line-height: 20px;
 }
- 
+
 div.group.birth div.txt div.sel ul li:hover {
     background: #e6e6e6;
 }
+

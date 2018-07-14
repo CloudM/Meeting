@@ -83,6 +83,7 @@
 					<!--[if IE]>
 					<br>
 					<![endif]-->
+					
 					<div class="modal-body">
 						<form class="form-inline" role="form" action="${pageContext.request.contextPath}/CreateAndReleaseMeeting?doPost" method="Post">
 						<div class="form-group">

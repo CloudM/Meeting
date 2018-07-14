@@ -23,6 +23,8 @@ import com.function.SessionContext;
 import com.service.MeetingService;
 import com.service.MeetingServiceImpl;
 
+import net.sf.json.JSONArray;
+
 @WebServlet("/ShowMeetingInfo")
 public class ShowMeetingInfo extends HttpServlet {
 	MeetingService ms = new MeetingServiceImpl();
@@ -34,42 +36,69 @@ public class ShowMeetingInfo extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		User user = (User)request.getAttribute("User");
-		 
-		Cookie[] cookies=request.getCookies();
+		
+		//1.获取能够与“url-pattern”中匹配的路径
+		String method = request.getServletPath();
+		//(此时处理的请求是查询 query.do)
+		System.out.println("request.getServletPath()获取的值为: " + method);//输出 /query.do
+		//2.通过字符串截取，把方法名 query 截取出来
+		method = method.substring(1, method.length()-3);
+		System.out.println("截取后的值为: "+ method);
+		
+/*		Cookie[] cookies=request.getCookies();
 		Cookies c=new Cookies();
 	    String sessionid= c.findCookie("SessionId",cookies);
-	    SessionContext myc= SessionContext.getInstance();  
-	    HttpSession sess = myc.getSession(sessionid);  
+	    System.out.println("sessionid="+sessionid);
+	    SessionContext myc= SessionContext.getInstance();
+	    HttpSession sess = myc.getSession(sessionid);
+	    if(sess ==null) {
+	    	System.out.println("sess is null");
+	    }
+	    else {
+	    	System.out.println("sess is not null");
+	    }
 	    User u=(User) sess.getAttribute("User");
+	    System.out.println("userid="+u.getUid());*/
 	    
-	    int status=0;
+	    
+	    int status1=0;
+	    int status2=0;
 	    MeetingService service=new MeetingServiceImpl();
-	    List<Meeting> list= new ArrayList();
-	    if(request.getParameter("type").equals("yantaohui")) {
-			 status=1;
+	    JSONArray Mlist = new JSONArray();
+	    if(method.equals("jsp/created")) {
+			 status1=1;
 			 }
-	    else if(request.getParameter("type").equals("luntan")) {
-	    	status=2;
+	    else if(method.equals("released")) {
+	    	status1=2;
+	    	status2=3;
 		 }
-	    if(service.ShasReleasedMeeting(u.getUid(),status)!=null) {
-	    	list=service.ShasReleasedMeeting(u.getUid(),status);
-	    	request.getRequestDispatcher("jsp/center.jsp").forward(request, response);
+	    else if(method.equals("ended")) {
+	    	status1=4;
+	    }
+	    System.out.println("status="+status1+status2);
+	    //System.out.println("userid+"+user.getUid());
+	    if(service.ShasReleasedMeeting(1,status1,status2)!=null) {
+	    	Mlist=service.ShasReleasedMeeting(1,status1,status2);
+	    	
+	    	System.out.println(Mlist.size());
+	    	 response.getWriter().println(Mlist); 
+	    	//request.getRequestDispatcher("jsp/center.jsp").forward(request, response);
 	    }
 	    else {
 	    	request.getRequestDispatcher("jsp/center.jsp").forward(request, response);
 	    	System.out.println("没有相关会议");
-	    	PrintWriter out=response.getWriter();
-			out.print("<script language='javascript'>alert('没有相关会议');window.location.href='jsp/center.jsp';</script>");
+	    	response.getWriter().println("none"); 
 			
 	    }
 		
-		sess.setAttribute("Mlist", list);
-		sess.setAttribute("count", list.size());
-		response.sendRedirect("/html/center.jsp");
+	   
+	   // myc.getSession(sessionid).setAttribute("Mlist", list);
+	    //myc.getSession(sessionid).setAttribute("count", list.size());
+		//request.getRequestDispatcher("jsp/center.jsp").forward(request, response);
 	}
 
-	/*protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
- 		doGet(request, response);
-	}*/
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+ 		doPost(request, response);
+	}
 
 }
