@@ -68,11 +68,11 @@ public class ShowMeetingInfo extends HttpServlet {
 	    if(method.equals("jsp/created")) {
 			 status1=1;
 			 }
-	    else if(method.equals("released")) {
+	    else if(method.equals("jsp/released")) {
 	    	status1=2;
 	    	status2=3;
 		 }
-	    else if(method.equals("ended")) {
+	    else if(method.equals("jsp/ended")) {
 	    	status1=4;
 	    }
 	    System.out.println("status="+status1+status2);

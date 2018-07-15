@@ -1,10 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>草稿箱</title>
+  <title>已完成会议</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   <!-- 新 Bootstrap 核心 CSS 文件 -->
@@ -14,7 +15,6 @@
   <link href="${pageContext.request.contextPath}/css/center.css" rel="stylesheet" type="text/css">   
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/font/iconfont.css">
   <link href="${pageContext.request.contextPath}/css/nav.css" rel="stylesheet" type="text/css"> 
- 
    
 </head>
 
@@ -108,9 +108,9 @@
             <li class="nav-item">
                 <a href="javascript:;"><i class="fa fa-gg-circle fa-lg"></i><span>我发布的会议</span><i class="my-icon nav-more"></i></a>
                 <ul style="display: block;">
-                    <li class="active" id="released"><a href="#"><span>草稿箱</span></a></li>
+                    <li><a href="${pageContext.request.contextPath}/jsp/center-org-script.jsp"><span>草稿箱</span></a></li>
                     <li><a href="${pageContext.request.contextPath}/jsp/center-org-have.jsp"><span>已发布会议</span></a></li>
-                    <li><a href="${pageContext.request.contextPath}/jsp/center-org-fini.jsp"><span>已完成会议</span></a></li>
+                    <li class="active"><a href="#"><span>已完成会议</span></a></li>
                 </ul>
             </li>
             <li class="nav-item">
@@ -128,14 +128,30 @@
 
         <div class="col-xs-10">
          <div class="meeting">  
-     <ul class="meet-list" id="meetlist">  
-      <!--  <li>  
+     <ul class="meet-list">  
+       <li>  
          <img src="../images/logo1.png" />  
          <h3>Headline</h3>  
          <p>Lorem ipsum dolor sit amet...</p>  
        </li>  
- -->
 
+       <li>  
+         <img src="../images/logo1.png" />  
+         <h3>Headline</h3>  
+         <p>Lorem ipsum dolor sit amet...</p>  
+       </li>  
+
+       <li>  
+         <img src="../images/logo1.png" />  
+         <h3>Headline</h3>  
+         <p>Lorem ipsum dolor sit amet...</p>  
+       </li>  
+
+       <li>  
+         <img src="../images/logo1.png" />  
+         <h3>Headline</h3>  
+         <p>Lorem ipsum dolor sit amet...</p>  
+       </li>  
      </ul>  
    </div> 
 </div>
@@ -155,13 +171,10 @@
 <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
 <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
 
-
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
- <script type="text/javascript" src="${pageContext.request.contextPath}/js/center-org.js"></script>
+ <script type="text/javascript" src="${pageContext.request.contextPath}/js/center-org-fini.js"></script>
  <script type="text/javascript" src="${pageContext.request.contextPath}/js/manageMlist.js"></script>
- 
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/nav.js"></script>
 </body>
-</html>>
+</html>

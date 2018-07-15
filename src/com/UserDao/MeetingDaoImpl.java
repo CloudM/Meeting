@@ -33,17 +33,17 @@ public class MeetingDaoImpl extends DBDao implements  MeetingDao{
 		}
 	//update meeting to change the status of meeting
 	//return row number
-	public int ReleaseMeeting(Meeting m) {
+	public int ReleaseMeeting(int mid) {
 		String sql="update meeting set MeetingStateID = ? where MeetingID=?";
-		Object[] obs= {2,m.getMid()};
+		Object[] obs= {2,mid};
 		return ExecuteUpdate(sql,obs);
 
 	}
 	//update meeting to change the information of meeting
     //return resultset
-	public int UpdateMeeting(Meeting m) {
-		String sql="update meeting set MeetingTypeID=?,StartTime=?,Place=?,MainGuest=?,MeetingIntroduction=?,Note=?,MeetingName=?,Host=?";
-		Object[] obs={m.getTypeid(),m.getStartTime(),m.getPlace(),m.getGuest(),m.getDescribe(),m.getRemarks(),m.getMname(),m.getHost()};
+	public int UpdateMeeting(Meeting m,int mid) {
+		String sql="update meeting set MeetingTypeID=?,StartTime=?,Place=?,MainGuest=?,MeetingIntroduction=?,Note=?,MeetingName=?,Host=? where MeetingID=?";
+		Object[] obs={m.getTypeid(),m.getStartTime(),m.getPlace(),m.getGuest(),m.getDescribe(),m.getRemarks(),m.getMname(),m.getHost(),mid};
 		return ExecuteUpdate(sql, obs);
 	
 	}
@@ -53,7 +53,5 @@ public class MeetingDaoImpl extends DBDao implements  MeetingDao{
 		String sql = "select * from meeting where UserID = ? and (MeetingStateID = ? or MeetingStateID=?)";
 		Object[] obs = {userid,status1,status2};
 		return ExecuteQuery(sql,obs);
-	}
-
-	
+	}	
 }

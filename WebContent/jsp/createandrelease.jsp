@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" import="com.entity.Meeting" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" %>
-    
+  
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 
@@ -84,18 +84,49 @@
 					<br>
 					<![endif]-->
 					
+					<%
+					if((Meeting)request.getSession().getAttribute("Meeting")!=null){
+					Meeting meeting=(Meeting)request.getSession().getAttribute("Meeting");
+					String Name=meeting.getMname();
+					String Host=meeting.getHost();
+					int type=meeting.getTypeid();
+					String Guest=meeting.getGuest();
+					String Time=meeting.getStartTime();
+					String Place=meeting.getPlace();
+					String Introduction=meeting.getDescribe();
+					String Remarks=meeting.getRemarks();
+					System.out.println(Introduction);
+					request.getSession().setAttribute("name", Name);
+					request.getSession().setAttribute("host", Host);
+					request.getSession().setAttribute("guest", Guest);
+					request.getSession().setAttribute("time", Time);
+					request.getSession().setAttribute("place", Place);
+					request.getSession().setAttribute("introduction", Introduction);
+					request.getSession().setAttribute("remarks", Remarks);
+					}else{
+						request.getSession().setAttribute("name", null);
+						request.getSession().setAttribute("host", null);
+						request.getSession().setAttribute("guest", null);
+						request.getSession().setAttribute("time", null);
+						request.getSession().setAttribute("place", null);
+						request.getSession().setAttribute("introduction", null);
+						request.getSession().setAttribute("remarks", null);
+					}
+					//request.getSession().setAttribute("name", Name);
+					%>
+					
 					<div class="modal-body">
 						<form class="form-inline" role="form" action="${pageContext.request.contextPath}/CreateAndReleaseMeeting?doPost" method="Post">
 						<div class="form-group">
 							<label class="reginfor">会议名称</label>
-							<input type="text" class="form-control" id="inputtext" name="name">
+							<input type="text" class="form-control" id="inputtext" name="name" value=${name}>
 							<i class="fa fa-user"></i>
 						</div>
 						<br>
 						<br>
 						<div class="form-group">
 							<label class="reginfor"> 主&nbsp;&nbsp;办&nbsp;&nbsp;方  </label>
-							<input type="text" class="form-control" id="inputtext1" name="host">
+							<input type="text" class="form-control" id="inputtext1" name="host" value=${host}>
 							<i class="fa fa-user"></i>
 						</div>
 						<br>
@@ -117,40 +148,40 @@
 						<br>
 						<div class="form-group">
 							<label class="reginfor">出席嘉宾</label>
-							<input type="text" class="form-control" id="inputtext" name="guest">
+							<input type="text" class="form-control" id="inputtext" name="guest" value=${guest}>
 							<i class="fa fa-user"></i>
 						</div>
 						<br>
 						<br>
 						<div class="form-group">
 							<label class="reginfor">会议时间</label>
-							<input type="text" class="form-control" id="inputtext" name="time">
+							<input type="text" class="form-control" id="inputtext" name="time" value=${time}>
 							<i class="fa fa-user"></i>
 						</div>
 						<br>
 						<br>
 						<div class="form-group">
 							<label class="reginfor">会议地点</label>
-							<input type="text" class="form-control" id="inputtext" name="place">
+							<input type="text" class="form-control" id="inputtext" name="place" value=${place}>
 							<i class="fa fa-user"></i>
 						</div>
 						<br>
 						<br>
 						<div class="form-group">
 							<label class="reginfor">会议介绍</label>
-							<textarea rows="5" class="form-control" cols="70" name="introduction"></textarea>
+							<textarea rows="5" class="form-control" cols="70" name="introduction"> ${introduction}</textarea>
 							<i class="fa fa-user"></i>
 						</div>
 						<br>
 						<br>
 						<div class="form-group">
 							<label class="reginfor">备注信息</label>
-							<textarea rows="5" class="form-control" cols="70" name="remarks"></textarea>
+							<textarea rows="5" class="form-control" cols="70" name="remarks">${remarks}</textarea>
 							<i class="fa fa-user"></i>
 						</div>
 						<div class="modal-footer">
 						
-				<input type="submit"  name="create"   value="创建会议">
+				<input type="submit"  name="create"   value="保存会议">
 				<input type="submit"  name="release"   value="发布会议">
                 
 				

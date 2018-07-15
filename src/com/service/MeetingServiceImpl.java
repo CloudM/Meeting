@@ -76,9 +76,9 @@ public class MeetingServiceImpl implements MeetingService{
 		return M;
 	}
 	//turn the result of changing meeting status to boolean
-	public boolean SUpdateMeeting(Meeting m) {
+	public boolean SUpdateMeeting(Meeting m,int mid) {
 		// TODO Auto-generated method stub
-		if (dao.UpdateMeeting(m)>0) {
+		if (dao.UpdateMeeting(m,mid)>0) {
 			return true;
 		}
 		else {
@@ -87,9 +87,9 @@ public class MeetingServiceImpl implements MeetingService{
 	
 	}
 	//turn the result of changing meeting status to boolean
-	public boolean SReleaseMeeting(Meeting m) {
+	public boolean SReleaseMeeting(int mid) {
 		// TODO Auto-generated method stub
-		if (dao.ReleaseMeeting(m)>0) {
+		if (dao.ReleaseMeeting(mid)>0) {
 			return true;
 		}
 		else {

@@ -64,7 +64,7 @@
 
         <li class="active" style="width: 100px;"><a href="##">网站首页</a></li>
         <li style="width: 100px;"><a href="##">所有会议</a></li>
-        <li style="width: 100px;"><a href="##">创建会议</a></li>
+        <li style="width: 100px;"><a href="${pageContext.request.contextPath}/jsp/createandrelease.jsp">创建会议</a></li>
         <li style="width: 100px;"><a href="##">个人中心</a></li>
         <li style="width: 100px;"><a href="##">消息中心</a></li>
       </ul>
@@ -133,8 +133,8 @@
                 <a href="javascript:;"><i class="fa fa-gg-circle fa-lg"></i><span>我发布的会议</span><i class="my-icon nav-more"></i></a>
                 <ul>
                     <li><a href="${pageContext.request.contextPath}/jsp/center-org-script.jsp"><span>草稿箱</span></a></li>
-                    <li><a href="center-org-have.html"><span>已发布会议</span></a></li>
-                    <li><a href="center-org-fini.html"><span>已完成会议</span></a></li>
+                    <li><a href="${pageContext.request.contextPath}/jsp/center-org-have.jsp"><span>已发布会议</span></a></li>
+                    <li><a href="${pageContext.request.contextPath}/jsp/center-org-fini.jsp"><span>已完成会议</span></a></li>
                 </ul>
             </li>
             <li class="nav-item">

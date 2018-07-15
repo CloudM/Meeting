@@ -9,7 +9,7 @@ public interface MeetingService {
 	public boolean SAddMeeting(Meeting m);
 	public boolean SDeleteMeeting(Meeting m);
 	public Meeting SFindMeeting(int mid);
-	public boolean SUpdateMeeting(Meeting m);
-	public boolean SReleaseMeeting(Meeting m);
+	public boolean SUpdateMeeting(Meeting m,int mid);
+	public boolean SReleaseMeeting(int mid);
 	public JSONArray ShasReleasedMeeting(int userid,int status1,int status2);
 }

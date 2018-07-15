@@ -30,10 +30,20 @@ public class MeetingAction extends HttpServlet {
 	
 	//new a meeting outside the functions
 	Meeting m=new Meeting();
+	Meeting meeting=new Meeting();
+	
  public void doPost(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException{
 	 response.setContentType("text/html;charset=UTF-8");
-	 User user = (User)request.getAttribute("User");
+	 User user = (User)request.getSession().getAttribute("User");
 	 
+	 meeting=null;
+	System.out.println("userid:"+user.getUid());
+	 if(request.getSession().getAttribute("Meeting")!=null) {
+	 meeting=(Meeting)request.getSession().getAttribute("Meeting");
+	 
+	 request.getSession().setAttribute("Meeting", null);
+	 System.out.println("meetingid:"+meeting.getMid());
+	 }
 	 //get all cookies and their values to find the cookie I need here through the cookie key
 	 //Cookie[] cookies=request.getCookies();
 	
@@ -65,9 +75,10 @@ public class MeetingAction extends HttpServlet {
 	  
 	    //assignment of meeting entity
 	 m.setMname(request.getParameter("name"));
-	 m.setMeetingStatus(1);
+	 //m.setMeetingStatus(1);
 	 //get the userid from the user entity
 	 m.setUserid(user.getUid());
+	 //System.out.println("userid:"+user.getUid());
 	 m.setHost(request.getParameter("host"));
 	 m.setDescribe(request.getParameter("introduction"));
 	 m.setGuest(request.getParameter("guest"));
@@ -114,26 +125,29 @@ public class MeetingAction extends HttpServlet {
 
 public void CreateMeeting(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
 	
-	//if(service.SFindMeeting(m) != null) {
-		// if(service.SUpdateMeeting(m)==true) {
-		//	 System.out.println("修改会议成功");
-	    //		PrintWriter out=response.getWriter();
-	    //		out.print("<script language='javascript'>alert('修改会议成功');window.location.href='center.jsp';</script>");
-		//	}
-		// else {
-		//	System.out.println("修改会议失败，请检查所填信息");
-		//	}
-	// }
-	//else {
+	if(meeting!=null) {
+		if(service.SUpdateMeeting(m,meeting.getMid())==true) {
+			 System.out.println("修改会议成功");
+	    		PrintWriter out=response.getWriter();
+	    		
+	    		//request.getRequestDispatcher("history.back()").forward(request, response);
+	    		out.print("<script language='javascript'>alert('修改会议成功');window.location.href='jsp/center-org-script.jsp';</script>");
+			}
+		 else {
+			System.out.println("修改会议失败，请检查所填信息");
+			}
+   }
+	else {
 	 try {
 		 //service.SAddMeeting(m);
 		 //add meeting
+		 m.setMeetingStatus(1);
 	    if(service.SAddMeeting(m)==true){
 		  System.out.println("创建会议成功");
 		  PrintWriter out=response.getWriter();
-			out.print("<script language='javascript'>alert('创建会议成功');window.location.href='createandrelease.jsp';</script>");
-		
-		   request.getRequestDispatcher("jsp/center.jsp").forward(request, response);
+		  out.print("<script language='javascript'>alert('创建会议成功');window.location.href='jsp/center-org-script.jsp';</script>");
+			
+		  // request.getRequestDispatcher("jsp/center-org-script.jsp").forward(request, response);
 		
 	    }
 	   
@@ -144,15 +158,15 @@ public void CreateMeeting(HttpServletRequest request,HttpServletResponse respons
 			out.print("<script language='javascript'>alert('创建会议失败，请检查所填信息');window.location.href='createandrelease.jsp';</script>");
 		
 	 }
-	// } 
+	 } 
  }
  public void ReleaseMeeting(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException{
 	 //Meeting m=(Meeting) request.getAttribute("meetingname");
 	 //if(service.SFindMeeting(m)==null) 
 		// CreateMeeting(request, response);
-	 m.setMid(3);
+	// m.setMid(3);
 	 
-	 if(service.SReleaseMeeting(m)) {
+	 /*if(service.SReleaseMeeting(meeting.getMid())) {
 		 String str_text="会议发布成功！";
  		 String str_title="已发布";
  		 JOptionPane.showMessageDialog(null, str_text, str_title, JOptionPane.PLAIN_MESSAGE);
@@ -160,6 +174,43 @@ public void CreateMeeting(HttpServletRequest request,HttpServletResponse respons
 	 }else {
 		 System.out.println("会议发布异常！");
 	 }
-
+*/
+	 if(meeting!=null) {
+		 if(service.SUpdateMeeting(m,meeting.getMid())==true) {
+			 if(service.SReleaseMeeting(meeting.getMid())==true) {
+				 System.out.println("发布会议成功");
+				 PrintWriter out=response.getWriter();
+				 out.print("<script language='javascript'>alert('发布会议成功');window.location.href='jsp/center-org-script.jsp';</script>");
+				 
+		 }
+			 else {
+				 System.out.println("发布会议失败");
+				 PrintWriter out=response.getWriter();
+				 out.print("<script language='javascript'>alert('发布会议失败，请检查会议信息填写是否正确');window.location.href='createandrelease.jsp';</script>");
+				 
+			 }
+			 }
+		 else {
+			 System.out.println("发布会议失败");
+			 PrintWriter out=response.getWriter();
+			 out.print("<script language='javascript'>alert('发布会议失败，请检查会议信息填写是否正确');window.location.href='createandrelease.jsp';</script>");
+			 
+		 }
+	 }
+	 else {
+		 m.setMeetingStatus(2);
+		 if(service.SAddMeeting(m)==true) {
+			 System.out.println("发布会议成功");
+			 PrintWriter out=response.getWriter();
+			 out.print("<script language='javascript'>alert('发布会议成功');window.location.href='jsp/center-org-script.jsp';</script>");
+			 
+		 }
+		 else {
+			 System.out.println("发布会议失败");
+			 PrintWriter out=response.getWriter();
+			 out.print("<script language='javascript'>alert('发布会议失败，请检查会议信息填写是否正确');window.location.href='createandrelease.jsp';</script>");
+			 
+		 }
+	 }
  }
 }

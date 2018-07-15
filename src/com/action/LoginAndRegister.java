@@ -62,7 +62,7 @@ public class LoginAndRegister extends HttpServlet {
 		    		//create a seesion and set the value of parameter
 		    		HttpSession session= request.getSession();
 		    		session.setAttribute("User", user);
-		    		//System.out.println(session.getId());
+		    		System.out.println(session.getId());
 		    		String sessionid=session.getId();
 		    		//create a cookie to save the seesionid of the session for searching it later
 		    		Cookie cookie = new Cookie("SessionId",sessionid);

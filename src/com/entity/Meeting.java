@@ -4,7 +4,7 @@ package com.entity;
 
 //Declarations of variables needed in the conference class
 public class Meeting {
-private int Mid;
+private int mid;
 private String Mname;
 private int Userid;
 private String Host;
@@ -20,10 +20,10 @@ private int MeetingStatus;
 
 //write set() and get() functions for all variables
 public int getMid() {
-	return Mid;
+	return mid;
 }
 public void setMid(int Mid) {
-	this.Mid=Mid;
+	this.mid=Mid;
 }
 public String getMname() {
 	return Mname;

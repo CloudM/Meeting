@@ -11,9 +11,10 @@ public int DeleteMeeting(Meeting m);
 //search meeting with mid
 public ResultSet FindMeeting(int mid);
 //change the status of meeting
-public int ReleaseMeeting(Meeting m);
+public int ReleaseMeeting(int mid);
 //change the information of meeting
-public int UpdateMeeting(Meeting m);
+public int UpdateMeeting(Meeting m,int mid);
 //find out all meetings with different status
 public ResultSet hasReleasedMeeting(int userid, int status1,int status2);
+
 }
