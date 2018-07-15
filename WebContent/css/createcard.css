@@ -1,0 +1,187 @@
+.qrcode-form {
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px 20px 20px 20px;
+    overflow: hidden;
+}
+
+.qrcode-menus, .qrcode-form, .qrcode-view, .qrcode-setting, .user-index {
+    background: #f9f9f9;
+    border: 1px solid #f0f0f0;
+}
+
+
+.qrcode-form .form-tit {
+    font-size: 20px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+
+.alert-danger, .alert-error {
+    border-color: #d59595;
+    color: #b94a48;
+}
+
+
+.qrcode-form .form-row {
+    border-bottom: 1px solid #f5f5f5;
+    margin-bottom: 10px;
+}
+.text-center {
+    text-align: center;
+}
+
+
+.mt10 {
+    margin-top: 10px;
+}
+
+img {
+    width: auto\9;
+    height: auto;
+    vertical-align: middle;
+    border: 0;
+    -ms-interpolation-mode: bicubic;
+}
+
+.qrcode-form .form-row {
+    border-bottom: 1px solid #f5f5f5;
+    margin-bottom: 10px;
+}
+
+.qrcode-form .row-th {
+    width: 100px;
+    display: inline-block;
+    text-align: right;
+    padding-right: 3px;
+    font-size: 14px;
+}
+
+select {
+    width: 220px;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+}
+
+select, input[type='file'] {
+    height: 50px;
+    *margin-top: 4px: ;
+    line-height: 50px;
+}
+
+.qrcode-form .form-qrtext-mini {
+    width: 115px;
+    margin-right: 5px;
+}
+
+.qrcode-form input, .qrcode-setting input {
+    border: 1px solid #ddd;
+    vertical-align: top;
+}
+
+textarea, input[type='text'], input[type='password'], input[type='datetime'], input[type='datetime-local'], input[type='date'], input[type='month'], input[type='time'], input[type='week'], input[type='number'], input[type='email'], input[type='url'], input[type='search'], input[type='tel'], input[type='color'], .uneditable-input {
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075);
+    -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+    -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+    -o-transition: border linear 0.2s, box-shadow linear 0.2s;
+    transition: border linear 0.2s, box-shadow linear 0.2s;
+}
+
+select, textarea, input[type='text'], input[type='password'], input[type='datetime'], input[type='datetime-local'], input[type='date'], input[type='month'], input[type='time'], input[type='week'], input[type='number'], input[type='email'], input[type='url'], input[type='search'], input[type='tel'], input[type='color'], .uneditable-input {
+    display: inline-block;
+    height: 30px;
+    padding: 4px 6px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    line-height: 20px;
+    color: #555555;
+    vertical-align: middle;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+
+
+
+.qrcode-form .form-qrtext-small {
+    width: 300px;
+    margin-right: 5px;
+}
+
+.modal-content{
+    width: 80%;
+    height: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card{
+    background: url(../images/card.jpg);
+    background-size: cover;
+    width: 100%;
+    height: 250px;
+    border: 1px;
+    border-style: solid;
+    border-color: #BEBEBE;
+    border-radius: 10px;
+}
+
+.nameinfo{
+    padding-top: 20px;
+    padding-left: 30px;
+}
+
+.name{
+    font-size: 30px;
+    color: #FFFFF0;
+}
+
+.companyinfo{
+    display: inline-block;
+    margin-top: 15px;
+    margin-left: 30px;
+}
+
+.company1{
+    font-size: 15px;
+    color: #FFFFF0;
+}
+
+.company2{
+    font-size: 20px;
+    color: #FFFFF0;
+    padding-left: 20px;
+}
+
+.contactinfo{
+    color: #FFFFF0;
+    font-size: 14px;
+    margin-top: 30px;
+    margin-left: 10px; 
+}
+
+.contact2{
+    margin-left: 30px;
+}
+
+.emailinfo{
+    color: #FFFFF0;
+    font-size: 14px;
+    margin-top: 10px;
+    margin-left: 10px; 
+}
+
+.addressinfo{
+    color: #FFFFF0;
+    font-size: 14px;
+    margin-top: 30px; 
+    margin-left: 30px;
+}

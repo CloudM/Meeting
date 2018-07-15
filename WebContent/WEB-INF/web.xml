@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>CloudM</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <servlet-name>LoginAndRegister</servlet-name>
+    <servlet-class>com.action.LoginAndRegister</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginAndRegister</servlet-name>
+    <url-pattern>/LoginAndRegister</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ResetUserServlet</servlet-name>
+    <servlet-class>com.action.ResetUserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ResetUserServlet</servlet-name>
+    <url-pattern>/ResetUserServlet</url-pattern>
+  </servlet-mapping>
+  
+    <servlet>
+    <servlet-name>CreateAndReleaseMeeting</servlet-name>
+    <servlet-class>com.action.MeetingAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreateAndReleaseMeeting</servlet-name>
+    <url-pattern>/CreateAndReleaseMeeting</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <servlet-name>ApplyAndCancelMeeting</servlet-name>
+    <servlet-class>com.action.ApplyAndCancel</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ApplyAndCancelMeeting</servlet-name>
+    <url-pattern>/ApplyAndCancelMeeting</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>CardAction</servlet-name>
+    <servlet-class>com.action.CardAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CardAction</servlet-name>
+    <url-pattern>/CardAction</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>EmailCheckAction</servlet-name>
+    <servlet-class>com.action.EmailCheckAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EmailCheckAction</servlet-name>
+    <url-pattern>/EmailCheckAction</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <servlet-name>SelectMeeting</servlet-name>
+    <servlet-class>com.action.ShowMeetingInfo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SelectMeeting</servlet-name>
+    <url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+
+<servlet>
+    <servlet-name>ShowOtherCard</servlet-name>
+    <servlet-class>com.action.ShowOtherCard</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowOtherCard</servlet-name>
+    <url-pattern>/ShowOtherCard</url-pattern>
+  </servlet-mapping>
+
+<servlet>
+    <servlet-name>ShowMyCard</servlet-name>
+    <servlet-class>com.action.ShowMyCard</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowMyCard</servlet-name>
+    <url-pattern>/ShowMyCard</url-pattern>
+  </servlet-mapping>
+
+<servlet>
+    <servlet-name>DownloadServlet</servlet-name>
+    <servlet-class>com.fileControl.DownloadServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DownloadServlet</servlet-name>
+    <url-pattern>/DownloadServlet</url-pattern>
+  </servlet-mapping>
+
+<servlet>
+    <servlet-name>FileCheckAction</servlet-name>
+    <servlet-class>com.fileControl.FileCheckAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FileCheckAction</servlet-name>
+    <url-pattern>/FileCheckAction</url-pattern>
+  </servlet-mapping>
+
+<servlet>
+    <servlet-name>ListFileServlet</servlet-name>
+    <servlet-class>com.fileControl.ListFileServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListFileServlet</servlet-name>
+    <url-pattern>/ListFileServlet</url-pattern>
+  </servlet-mapping>
+
+<servlet>
+    <servlet-name>UploadHandleServlet</servlet-name>
+    <servlet-class>com.fileControl.UploadHandleServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UploadHandleServlet</servlet-name>
+    <url-pattern>/UploadHandleServlet</url-pattern>
+  </servlet-mapping>
+
+      <listener>  
+        <listener-class>com.function.Sessions</listener-class>  
+    </listener>  
+</web-app>
