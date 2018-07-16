@@ -1,6 +1,6 @@
 //Karenzhu
 
-package com.UserDao;
+package com.Dao;
 
 import java.sql.ResultSet;
 
@@ -18,7 +18,7 @@ public class MeetingDaoImpl extends DBDao implements  MeetingDao{
     //delete meeting according to mid with sql statement realization
     //return row number
 	public int DeleteMeeting(Meeting m) {
-		String sql="delete from meeting where Mid=?";
+		String sql="delete from meeting where MeetingID=?";
 		Object[] obs = {m.getMid()};
 		return ExecuteUpdate(sql, obs);
 	}
@@ -53,5 +53,19 @@ public class MeetingDaoImpl extends DBDao implements  MeetingDao{
 		String sql = "select * from meeting where UserID = ? and (MeetingStateID = ? or MeetingStateID=?)";
 		Object[] obs = {userid,status1,status2};
 		return ExecuteQuery(sql,obs);
-	}	
+	}
+	//find all meetings
+	//return reultset
+	public ResultSet allMeetings() {
+		String sql = "select * from meeting";
+		Object[] obs = {};
+		return ExecuteQuery(sql,obs);
+	}
+	//find meetings with applyer
+	//return resutset
+	public ResultSet applyedMeeting(int uid,int stateid) {
+		String sql = "select * from meeting join applylist on meeting.MeetingID=applylist.MeetingID where applylist.UserID=? and applylist.ApplyState=?;";
+		Object[] obs = {uid,stateid};
+		return ExecuteQuery(sql,obs);
+	}
 }

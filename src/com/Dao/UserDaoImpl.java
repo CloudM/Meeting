@@ -1,7 +1,6 @@
-package com.UserDao;
+package com.Dao;
 
 import java.sql.ResultSet;
-import java.sql.SQLException;
 
 import com.DBbase.DBDao;
 import com.entity.User;
@@ -14,7 +13,7 @@ public class UserDaoImpl extends DBDao implements UserDao{
 		return ExecuteUpdate(sql, obs);
 	}
 
-	//ÓÃUserStateÀ´±íÊ¾ÓÃ»§×´Ì¬£¬100±íÊ¾Î´×¢²á³É¹¦£¬0±íÊ¾×¢²á³É¹¦µ«Î´µÇÂ¼£¬1±íÊ¾×¢²á³É¹¦²¢ÒÑ¾­µÇÂ¼
+	//ï¿½ï¿½UserStateï¿½ï¿½ï¿½ï¿½Ê¾ï¿½Ã»ï¿½×´Ì¬ï¿½ï¿½100ï¿½ï¿½Ê¾Î´×¢ï¿½ï¿½É¹ï¿½ï¿½ï¿?0ï¿½ï¿½Ê¾×¢ï¿½ï¿½É¹ï¿½ï¿½ï¿½Î´ï¿½ï¿½Â¼ï¿½ï¿?1ï¿½ï¿½Ê¾×¢ï¿½ï¿½É¹ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½Â?
 	public int doRegister(User u) {
 		 String sql="INSERT INTO userlogin(UserID, UserName, Password, Email, Token, UserState, Token_Time) "
 		 		+ "VALUES(null,?,?,?,?,100,now())";

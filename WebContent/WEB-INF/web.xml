@@ -44,14 +44,14 @@
     <url-pattern>/ApplyAndCancelMeeting</url-pattern>
   </servlet-mapping>
   
-  <servlet>
+  <!-- <servlet>
     <servlet-name>ShowApply</servlet-name>
     <servlet-class>com.action.ShowApply</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ShowApply</servlet-name>
     <url-pattern>/ShowApply</url-pattern>
-  </servlet-mapping>
+  </servlet-mapping> -->
   
   
   <servlet>
@@ -88,6 +88,96 @@
   <servlet-mapping>
     <servlet-name>SearchMeeting</servlet-name>
     <url-pattern>*.searchMeeting</url-pattern>
+  </servlet-mapping>
+  
+      <servlet>
+    <servlet-name>SearchApplyMeeting</servlet-name>
+    <servlet-class>com.action.ShowApplyMeeting</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SearchApplyMeeting</servlet-name>
+    <url-pattern>*.searchApplyMeeting</url-pattern>
+  </servlet-mapping>
+  
+    <servlet>
+    <servlet-name>ShowApply</servlet-name>
+    <servlet-class>com.action.ShowApply</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowApply</servlet-name>
+    <url-pattern>*.applyedMeeting</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>CardAction</servlet-name>
+    <servlet-class>com.action.CardAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CardAction</servlet-name>
+    <url-pattern>/CardAction</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>EmailCheckAction</servlet-name>
+    <servlet-class>com.action.EmailCheckAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EmailCheckAction</servlet-name>
+    <url-pattern>/EmailCheckAction</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ShowOtherCard</servlet-name>
+    <servlet-class>com.action.ShowOtherCard</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowOtherCard</servlet-name>
+    <url-pattern>/ShowOtherCard</url-pattern>
+  </servlet-mapping>
+
+<servlet>
+    <servlet-name>ShowMyCard</servlet-name>
+    <servlet-class>com.action.ShowMyCard</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowMyCard</servlet-name>
+    <url-pattern>/ShowMyCard</url-pattern>
+  </servlet-mapping>
+
+<servlet>
+    <servlet-name>DownloadServlet</servlet-name>
+    <servlet-class>com.fileControl.DownloadServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DownloadServlet</servlet-name>
+    <url-pattern>/DownloadServlet</url-pattern>
+  </servlet-mapping>
+
+<servlet>
+    <servlet-name>FileCheckAction</servlet-name>
+    <servlet-class>com.fileControl.FileCheckAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FileCheckAction</servlet-name>
+    <url-pattern>/FileCheckAction</url-pattern>
+  </servlet-mapping>
+
+<servlet>
+    <servlet-name>ListFileServlet</servlet-name>
+    <servlet-class>com.fileControl.ListFileServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListFileServlet</servlet-name>
+    <url-pattern>/ListFileServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>UploadHandleServlet</servlet-name>
+    <servlet-class>com.fileControl.UploadHandleServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UploadHandleServlet</servlet-name>
+    <url-pattern>/UploadHandleServlet</url-pattern>
   </servlet-mapping>
   
 </web-app>

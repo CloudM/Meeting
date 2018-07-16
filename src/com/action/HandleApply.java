@@ -42,17 +42,17 @@ public class HandleApply extends HttpServlet {
         
         Meeting meeting = new Meeting();
         meeting.setMid(Integer.parseInt(request.getParameter("MeetingID")));
-       // String MName = MService.SFindMeeting(meeting.getMid()).getMname();
+        //String MName = MService.SFindMeeting(meeting.getMname());
         String letter = null;
         
         String UserEmail = UService.SgetUser(Integer.parseInt(request.getParameter("UserID"))).getUEmail();
         
         if(AService.ShandleApply(apply)) {
         	if(apply.getApplyState() == 2) {
-        //		letter = " 尊敬的用户，您向会议 " + MName + " 发起的参与申请已被允许，请及时参加会议。 ";
+        		//letter = " 尊敬的用户，您向会议 " + MName + " 发起的参与申请已被允许，请及时参加会议。 ";
         	}
         	else if(apply.getApplyState() == 3) {
-        //		letter = " 尊敬的用户，您向会议 " + MName + " 发起的参与申请已被拒绝，您可以私下与会议发起者联系以了解详情。 ";
+        		//letter = " 尊敬的用户，您向会议 " + MName + " 发起的参与申请已被拒绝，您可以私下与会议发起者联系以了解详情。 ";
         	} else {
         		System.out.println("前端数据获取有异常！！！！！！");
         	}

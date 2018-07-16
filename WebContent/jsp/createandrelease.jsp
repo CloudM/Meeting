@@ -183,7 +183,7 @@
 						
 				<input type="submit"  name="create"   value="保存会议">
 				<input type="submit"  name="release"   value="发布会议">
-                
+                <input type="submit"  name="delete"   value="删除会议">
 				
                 </div>
 						</form>

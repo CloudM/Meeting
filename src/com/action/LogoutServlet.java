@@ -31,10 +31,7 @@ public class LogoutServlet extends HttpServlet {
 		service.SLogout(u);
 		session.removeAttribute("user");
 		request.getSession().invalidate();
-		//PrintWriter out = response.getWriter();
-		//out.print("<script language=javascript>window.close();</script>");
 		//重定向到index.jsp
 		response.sendRedirect("index.jsp");
-		//request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
 }

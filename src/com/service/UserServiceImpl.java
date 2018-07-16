@@ -12,8 +12,8 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 import javax.mail.internet.MimeUtility;
 
-import com.UserDao.UserDao;
-import com.UserDao.UserDaoImpl;
+import com.Dao.UserDao;
+import com.Dao.UserDaoImpl;
 import com.entity.User;
 
 import java.sql.ResultSet;
@@ -23,7 +23,7 @@ import java.util.Properties;
 
 public class UserServiceImpl implements UserService {
 	
-UserDao dao= new UserDaoImpl();
+	UserDao dao= new UserDaoImpl();
 	
     public void sendEmail(String myEmail, String myPassword, String receiveMail, String letter) throws Exception {
         String myEmailSMTPHost = "smtp.163.com";
@@ -332,5 +332,4 @@ UserDao dao= new UserDaoImpl();
 		}
 		return false;
 	}
-	
 }

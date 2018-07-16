@@ -1,5 +1,6 @@
 <%@ page language="java" import="com.entity.User" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,10 +11,10 @@
   <!-- 新 Bootstrap 核心 CSS 文件 -->
   <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">  
   <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
-  <link href="${pageContext.request.contextPath}/css/public.css" rel="stylesheet" type="text/css"> 
-  <link href="${pageContext.request.contextPath}/css/center.css" rel="stylesheet" type="text/css">   
-  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/font/iconfont.css">
-  <link href="${pageContext.request.contextPath}/css/nav.css" rel="stylesheet" type="text/css"> 
+  <link href="./css/public.css" rel="stylesheet" type="text/css"> 
+  <link href="./css/center.css" rel="stylesheet" type="text/css">   
+  <link rel="stylesheet" type="text/css" href="./font/iconfont.css">
+  <link href="./css/nav.css" rel="stylesheet" type="text/css"> 
    
    <script type="text/javascript">
 	    function logout()
@@ -63,19 +64,18 @@
       <ul class="nav navbar-nav" style="display: inline-block;float: none;">
 
         <li class="active" style="width: 100px;"><a href="##">网站首页</a></li>
-        <li style="width: 100px;"><a href="##">所有会议</a></li>
+        <li style="width: 100px;"><a href="${pageContext.request.contextPath}/jsp/attend.jsp">所有会议</a></li>
         <li style="width: 100px;"><a href="${pageContext.request.contextPath}/jsp/createandrelease.jsp">创建会议</a></li>
         <li style="width: 100px;"><a href="##">个人中心</a></li>
         <li style="width: 100px;"><a href="##">消息中心</a></li>
       </ul>
 
       <ul class="nav navbar-nav" style="float: right;margin-right: 40px;">
-        <li style="width: 80px;">
-          <a href="##">
-            <button type="button" class="btn btn-primary" style="font-size: 12px;">
-              <span class="glyphicon glyphicon-chevron-right"></span> 退出登陆
-            </button>
-          </a>
+            <li style="width: 80px;">
+                <button type="button" onclick="logout()" class="btn btn-primary" style="font-size: 12px;">
+                    <span class="glyphicon glyphicon-chevron-right">退出登陆</span> 
+                </button>
+            </li>
         </ul>
 
       </div>
@@ -88,12 +88,12 @@
       <div class="user-info clearfix">
         <div class="user-pic" data-is-fans="" data-is-follows="">
           <div class="user-pic-bg">
-            <img class="img" src="../images/touxiang.jpg" alt="">
+            <img class="img" src="${pageContext.request.contextPath}/images/touxiang.jpg" alt="">
           </div><!--user-pic-big end-->           
         </div>
 
         <div class="user-info-right">
-          <h3 class="user-name clearfix">
+        <h3 class="user-name clearfix">
             <span>${User.uname}</span>
         </h3>
         <!--25-->
@@ -101,7 +101,7 @@
         <span>${User.sex}</span>
         <span>${User.city}</span>
         <span>${User.job}</span>
-          </p>
+        </p>
         </div>
 
 
@@ -114,19 +114,19 @@
         <div class="col-xs-2">
          <div class="nav1">
         <div class="nav-top">
-            <div id="mini" style="border-bottom:1px solid rgba(255,255,255,.1)"><img src="./images/mini.png" ></div>
+            <div id="mini" style="border-bottom:1px solid rgba(255,255,255,.1)"><img src="${pageContext.request.contextPath}/images/mini.png" ></div>
         </div>
 
         <ul>
            <li class="nav-item">
-            <a href="center.html"><i class="fa fa-user-circle fa-lg"></i><span>个人信息</span></a>
+            <a href="#"><i class="fa fa-user-circle fa-lg"></i><span>个人信息</span></a>
           </li>
             <li class="nav-item">
                 <a href="javascript:;"><i class="fa fa-calendar fa-lg"></i><span>我参加的会议</span><i class="my-icon nav-more"></i></a>
                 <ul>
-                    <li><a href="center-attend-wait.html"><span>待审核</span></a></li>
-                    <li><a href="center-attend-to.html"><span>待参加会议</span></a></li>
-                    <li><a href="center-attend-have.html"><span>已参加会议</span></a></li>
+                    <li><a href="${pageContext.request.contextPath}/jsp/center-attend-wait.jsp"><span>待审核</span></a></li>
+                    <li><a href="${pageContext.request.contextPath}/jsp/center-attend-to.jsp"><span>待参加会议</span></a></li>
+                    <li><a href="${pageContext.request.contextPath}/jsp/center-attend-have.jsp"><span>已参加会议</span></a></li>
                 </ul>
             </li>
             <li class="nav-item">
@@ -140,8 +140,8 @@
             <li class="nav-item">
                 <a href="javascript:;"><i class="fa fa-address-card fa-lg"></i><span>名片夹</span><i class="my-icon nav-more"></i></a>
                 <ul>
-                    <li><a href="center-card-my.html"><span>我的名片</span></a></li>
-                    <li><a href="center-card-other.html"><span>收藏名片</span></a></li>
+                    <li><a href="${pageContext.request.contextPath}/ShowMyCard"><span>我的名片</span></a></li>
+                    <li><a href="${pageContext.request.contextPath}/jsp/center-card-other.jsp"><span>收藏名片</span></a></li>
                 </ul>
             </li>
 
@@ -169,7 +169,7 @@
                   </div>
                   <div class="modal-body">
 
-                    <form class="form-horizontal" action="${pageContext.request.contextPath}/ResetUserServlet" method="post">
+           <form class="form-horizontal" action="${pageContext.request.contextPath}/ResetUserServlet" method="post">
                 <div class="form-group">
                     <label class="reginfo">用户名</label>
                     <input name="userName" type="email" class="form-control1" id="inputEmail3" value=${User.uname}>
@@ -273,42 +273,52 @@
         <div class="line"></div>
 
         <div class="info-wapper">
-          <div class="info-box clearfix">
-            <label class="pull-left">用户名</label>
-            <div class="pull-left">${User.uname}</div>
-          </div>
+                        <div class="info-box clearfix">
+                            <label class="pull-left">用户名</label>
+                            <div class="pull-left">${User.uname}</div>
+                        </div>
 
-          <div class="info-box clearfix">
-            <label class="pull-left">邮箱</label>
-            <div class="pull-left">${User.UEmail}</div>
-          </div>
-
-          <div class="info-box clearfix">
-            <label class="pull-left">生日</label>
-            <div class="pull-left">1998.5.19</div>
-          </div>
-
-          <div class="info-box clearfix">
-            <label class="pull-left">职位</label>
-            <div class="pull-left">学生</div>
-          </div>
-
-          <div class="info-box clearfix">
-            <label class="pull-left">城市</label>
-            <div class="pull-left">武汉</div>
-          </div>
-
-          <div class="info-box clearfix">
-            <label class="pull-left">性别</label>
-            <div class="pull-left">男</div>
-          </div>
-
-          <div class="info-box clearfix">
-            <label class="pull-left">个性签名</label>
-            <div class="pull-left">Carpe diem.</div>
-          </div>
-
-        </div>
+                        <div class="info-box clearfix">
+                            <label class="pull-left">邮箱</label>
+                            <div class="pull-left">${User.UEmail}</div>
+                        </div>
+                        
+                         <div class="info-box clearfix">
+                            <label class="pull-left">生日</label>
+                            <div class="pull-left">${User.birthday}</div>
+                        </div>
+                        
+                        <div class="info-box clearfix">
+                            <label class="pull-left">性别</label>
+                            <div class="pull-left">${User.sex}</div>
+                        </div>
+                        
+                        <div class="info-box clearfix">
+                            <label class="pull-left">电话号码</label>
+                            <div class="pull-left">${User.phoneNumber}</div>
+                        </div>
+                        
+                        <div class="info-box clearfix">
+                            <label class="pull-left">职位</label>
+                            <div class="pull-left">${User.job}</div>
+                        </div>
+                    
+                        <div class="info-box clearfix">
+                            <label class="pull-left">城市</label>
+                            <div class="pull-left">${User.city}</div>
+                        </div>
+            
+                        <div class="info-box clearfix">
+                            <label class="pull-left">爱好</label>
+                            <div class="pull-left">${User.hobby}</div>
+                        </div>
+                        
+                        <div class="info-box clearfix">
+                            <label class="pull-left">座右铭</label>
+                            <div class="pull-left">${User.motto}</div>
+                        </div>
+                    
+                    </div>
 
       </div>
       
@@ -338,8 +348,8 @@
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<script type="text/javascript" src="./js/birth.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/birth.js"></script>
 
-<script type="text/javascript" src="./js/nav.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/nav.js"></script>
 </body>
 </html>

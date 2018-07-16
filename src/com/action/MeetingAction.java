@@ -112,11 +112,15 @@ public class MeetingAction extends HttpServlet {
 	 //judge which button the user click and turn to the right function
 	 String create = request.getParameter("create");
 	 String release = request.getParameter("release");
+	 String delete=request.getParameter("delete");
  	if(create!=null) {
  		CreateMeeting(request,response);
  	}
  	else if(release!=null) {
- 	ReleaseMeeting(request,response);
+ 	    ReleaseMeeting(request,response);
+ 	}
+ 	else if(delete!=null) {
+ 		DeleteMeeting(request,response);
  	}
  
 }
@@ -193,7 +197,7 @@ public void CreateMeeting(HttpServletRequest request,HttpServletResponse respons
 		 else {
 			 System.out.println("发布会议失败");
 			 PrintWriter out=response.getWriter();
-			 out.print("<script language='javascript'>alert('发布会议失败，请检查会议信息填写是否正确');window.location.href='createandrelease.jsp';</script>");
+			 out.print("<script language='javascript'>alert('发布会议失败，请检查会议信息填写是否正确');window.location.href='jsp/createandrelease.jsp';</script>");
 			 
 		 }
 	 }
@@ -208,7 +212,23 @@ public void CreateMeeting(HttpServletRequest request,HttpServletResponse respons
 		 else {
 			 System.out.println("发布会议失败");
 			 PrintWriter out=response.getWriter();
-			 out.print("<script language='javascript'>alert('发布会议失败，请检查会议信息填写是否正确');window.location.href='createandrelease.jsp';</script>");
+			 out.print("<script language='javascript'>alert('发布会议失败，请检查会议信息填写是否正确');window.location.href='jsp/createandrelease.jsp';</script>");
+			 
+		 }
+	 }
+ }
+ public void DeleteMeeting(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException{
+	 if(meeting!=null) {
+		 if(service.SDeleteMeeting(meeting)) {
+			 System.out.println("删除会议成功");
+			 PrintWriter out=response.getWriter();
+			 out.print("<script language='javascript'>alert('删除会议成功');window.location.href='jsp/center-org-script.jsp';</script>");
+			 
+		 }
+		 else{
+			 System.out.println("发删除会议失败");
+			 PrintWriter out=response.getWriter();
+			 out.print("<script language='javascript'>alert('删除会议失败，请检查会议信息填写是否正确');window.location.href='jsp/createandrelease.jsp';</script>");
 			 
 		 }
 	 }

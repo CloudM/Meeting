@@ -28,6 +28,6 @@ $(function(){
     var rightheight=$(".col-xs-10").outerHeight();
     $(".col-xs-2").css("height",rightheight);
 
-    var rightmargin=$(".col-xs-2").outerWidth();
-    $(".nav1").css("margin-left",-rightmargin+133);
+    var rightmargin=$(".col-xs-10").outerWidth();
+    $(".nav1").css("margin-left",(-rightmargin)/5+5);
 });

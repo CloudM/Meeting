@@ -1,3 +1,4 @@
+//karen
 package com.action;
 
 import java.io.IOException;
@@ -35,8 +36,8 @@ public class ShowMeetingInfo extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
-		User user = (User)request.getAttribute("User");
-		
+		User user = (User)request.getSession().getAttribute("User");
+		int uid=user.getUid();
 		//1.获取能够与“url-pattern”中匹配的路径
 		String method = request.getServletPath();
 		//(此时处理的请求是查询 query.do)
@@ -65,32 +66,48 @@ public class ShowMeetingInfo extends HttpServlet {
 	    int status2=0;
 	    MeetingService service=new MeetingServiceImpl();
 	    JSONArray Mlist = new JSONArray();
-	    if(method.equals("jsp/created")) {
-			 status1=1;
-			 }
-	    else if(method.equals("jsp/released")) {
-	    	status1=2;
-	    	status2=3;
-		 }
-	    else if(method.equals("jsp/ended")) {
-	    	status1=4;
+	    //search all meetings
+	    if(method.equals("jsp/all")){
+	    	if(service.SallMeetings()!=null) {
+	    		Mlist=service.SallMeetings();
+	    	    System.out.println("Mlist.size:"+Mlist.size());
+	    	    response.getWriter().println(Mlist);
+	    	}
+	    	else {
+	    		request.getRequestDispatcher("jsp/center.jsp").forward(request, response);
+		    	System.out.println("没有相关会议");
+		    	response.getWriter().println("none"); 
+	    	}
 	    }
-	    System.out.println("status="+status1+status2);
-	    //System.out.println("userid+"+user.getUid());
-	    if(service.ShasReleasedMeeting(1,status1,status2)!=null) {
-	    	Mlist=service.ShasReleasedMeeting(1,status1,status2);
-	    	
-	    	System.out.println(Mlist.size());
-	    	 response.getWriter().println(Mlist); 
-	    	//request.getRequestDispatcher("jsp/center.jsp").forward(request, response);
-	    }
+	    
+	    //see which status is transfered from js
 	    else {
-	    	request.getRequestDispatcher("jsp/center.jsp").forward(request, response);
-	    	System.out.println("没有相关会议");
-	    	response.getWriter().println("none"); 
-			
-	    }
-		
+	    	if(method.equals("jsp/created")) {
+	    		status1=1;
+	    		}
+	        else if(method.equals("jsp/released")) {
+	    	    status1=2;
+	    	    status2=3;
+		        }
+	        else if(method.equals("jsp/ended")) {
+	    	    status1=4;
+	            }
+	    	System.out.println("status="+status1+status2);
+	    //System.out.println("userid+"+user.getUid());
+	    //search meetings with status
+	        if(service.ShasReleasedMeeting(uid,status1,status2)!=null) {
+	    	    Mlist=service.ShasReleasedMeeting(uid,status1,status2);
+	    	
+	    	    System.out.println("Mlist.size:"+Mlist.size());
+	    	    response.getWriter().println(Mlist); 
+	    	//request.getRequestDispatcher("jsp/center.jsp").forward(request, response);
+	            }
+	        else {
+	    	    request.getRequestDispatcher("jsp/center.jsp").forward(request, response);
+	    	    System.out.println("没有相关会议");
+	    	    response.getWriter().println("none"); 
+	    	    }
+	        }
 	   
 	   // myc.getSession(sessionid).setAttribute("Mlist", list);
 	    //myc.getSession(sessionid).setAttribute("count", list.size());

@@ -97,19 +97,19 @@
            <li class="nav-item">
             <a href="center.html"><i class="fa fa-user-circle fa-lg"></i><span>个人信息</span></a>
           </li>
-            <li class="nav-item">
+           <li class="nav-item">
                 <a href="javascript:;"><i class="fa fa-calendar fa-lg"></i><span>我参加的会议</span><i class="my-icon nav-more"></i></a>
                 <ul>
-                    <li><a href="center-attend-wait.html"><span>待审核</span></a></li>
-                    <li><a href="center-attend-to.html"><span>待参加会议</span></a></li>
-                    <li><a href="center-attend-have.html"><span>已参加会议</span></a></li>
+                    <li><a href="${pageContext.request.contextPath}/jsp/center-attend-wait.jsp"><span>待审核</span></a></li>
+                    <li><a href="${pageContext.request.contextPath}/jsp/center-attend-to.jsp"><span>待参加会议</span></a></li>
+                    <li><a href="${pageContext.request.contextPath}/jsp/center-attend-have.jsp"><span>已参加会议</span></a></li>
                 </ul>
             </li>
             <li class="nav-item">
                 <a href="javascript:;"><i class="fa fa-gg-circle fa-lg"></i><span>我发布的会议</span><i class="my-icon nav-more"></i></a>
-                <ul style="display: block;">
+                <ul>
                     <li><a href="${pageContext.request.contextPath}/jsp/center-org-script.jsp"><span>草稿箱</span></a></li>
-                    <li class="active"><a href="#"><span>已发布会议</span></a></li>
+                    <li><a href="#"><span>已发布会议</span></a></li>
                     <li><a href="${pageContext.request.contextPath}/jsp/center-org-fini.jsp"><span>已完成会议</span></a></li>
                 </ul>
             </li>
@@ -128,7 +128,7 @@
 
         <div class="col-xs-10">
          <div class="meeting">  
-     <ul class="meet-list">  
+     <ul class="meet-list" id="meetlist">  
        <li>  
          <img src="../images/logo1.png" />  
          <h3>Headline</h3>  

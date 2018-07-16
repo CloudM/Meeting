@@ -1,6 +1,8 @@
 //Karenzhu
 package com.service;
 
+import java.sql.ResultSet;
+
 import com.entity.Meeting;
 
 import net.sf.json.JSONArray;
@@ -12,4 +14,6 @@ public interface MeetingService {
 	public boolean SUpdateMeeting(Meeting m,int mid);
 	public boolean SReleaseMeeting(int mid);
 	public JSONArray ShasReleasedMeeting(int userid,int status1,int status2);
+	public JSONArray SallMeetings();
+	public JSONArray SapplyedMeeting(int uid,int stateid);
 }

@@ -5,8 +5,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.UserDao.MeetingDao;
-import com.UserDao.MeetingDaoImpl;
+import com.Dao.MeetingDao;
+import com.Dao.MeetingDaoImpl;
 import com.entity.Meeting;
 
 import net.sf.json.JSON;
@@ -129,5 +129,64 @@ public class MeetingServiceImpl implements MeetingService{
 		return M;
 	}
 
-
+public JSONArray SallMeetings() {
+	JSONArray M = new JSONArray(); 
+	ResultSet rs = dao.allMeetings();
+	if(rs!=null) {
+	try {
+		while(rs.next()) {
+			//Meeting m=new Meeting();
+			JSONObject m = new JSONObject();
+			m.put("Mid",rs.getInt(1));
+			m.put("Typeid",rs.getInt(2));
+			m.put("Userid",rs.getInt(3));
+			m.put("MeetingStatus",rs.getInt(4));
+			m.put("StartTime",rs.getString(5));
+			m.put("EndTime",rs.getString(6));
+			m.put("Place",rs.getString(7));
+			m.put("Guest",rs.getString(9));
+			m.put("Describe",rs.getString(10));
+			m.put("Remarks",rs.getString(11));
+			m.put("SetTime",rs.getString(12));
+			m.put("Mname",rs.getString(13));
+			m.put("Host",rs.getString(14));
+			M.add(m);
+			}
+		} catch (SQLException e2) {
+		// TODO Auto-generated catch block
+		e2.printStackTrace();
+		}
+	}
+	return M;
+}
+public JSONArray SapplyedMeeting(int uid,int stateid) {
+	JSONArray M = new JSONArray(); 
+	ResultSet rs = dao.applyedMeeting(uid,stateid);
+	if(rs!=null) {
+	try {
+		while(rs.next()) {
+			//Meeting m=new Meeting();
+			JSONObject m = new JSONObject();
+			m.put("Mid",rs.getInt(1));
+			m.put("Typeid",rs.getInt(2));
+			m.put("Userid",rs.getInt(3));
+			m.put("MeetingStatus",rs.getInt(4));
+			m.put("StartTime",rs.getString(5));
+			m.put("EndTime",rs.getString(6));
+			m.put("Place",rs.getString(7));
+			m.put("Guest",rs.getString(9));
+			m.put("Describe",rs.getString(10));
+			m.put("Remarks",rs.getString(11));
+			m.put("SetTime",rs.getString(12));
+			m.put("Mname",rs.getString(13));
+			m.put("Host",rs.getString(14));
+			M.add(m);
+			}
+		} catch (SQLException e2) {
+		// TODO Auto-generated catch block
+		e2.printStackTrace();
+		}
+	}
+	return M;
+}
 }

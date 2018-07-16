@@ -1,4 +1,4 @@
-package com.UserDao;
+package com.Dao;
 
 import java.sql.ResultSet;
 
@@ -7,9 +7,9 @@ import com.DBbase.DBDao;
 import com.entity.Apply;
 
 public class ApplyDaoImpl extends DBDao implements ApplyDao{
-	public int SetApplyState(Apply apply) {
+	public int SetApplyState(int state,int mid,int uid) {
 		String sql="UPDATE ApplyList SET ApplyState = ? WHERE MeetingID = ? AND UserID = ?";
-		 Object[] obs={apply.getApplyState(), apply.getMeetingID(), apply.getUserID()};
+		 Object[] obs={state, mid, uid};
 		return ExecuteUpdate(sql, obs);
 	}
 
@@ -27,9 +27,15 @@ public class ApplyDaoImpl extends DBDao implements ApplyDao{
 	}
 
 	
-	public ResultSet IsApply(Apply apply) {
-		String sql="SELECT * FROM ApplyList WHERE MeetingID = ? AND UserID = ?";
-		Object[] obs= {apply.getMeetingID(), apply.getUserID()};
+	public ResultSet IsApply(int uid,int mid) {
+		String sql="SELECT * FROM applylist WHERE MeetingID = ? AND UserID = ?";
+		Object[] obs= {mid, uid};
 		return ExecuteQuery(sql,obs);
+	}
+
+	@Override
+	public int SetApplyState(Apply apply) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }
