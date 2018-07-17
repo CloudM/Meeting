@@ -39,7 +39,7 @@ public class ShowApply extends HttpServlet{
 			System.out.println("截取后的值为: "+ method);
 			int mid =Integer.parseInt(method);
 			System.out.println("截取后的值为: "+ mid);
-          request.setAttribute("Meetingid", mid);
+          request.getSession().setAttribute("Meetingid", mid);
 		 //get all cookies and their values to find the cookie I need here through the cookie key
 		/* Cookie[] cookies=request.getCookies();
 		 

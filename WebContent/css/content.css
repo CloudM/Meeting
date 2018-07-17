@@ -1,20 +1,160 @@
+
 h1{
 	text-align: center;
 	padding: 30px;
 }
 
-#container2{
+#container1{
 	width: 100%;
-	height: 60px;
-	background-color: #fff;
-}
-
-#confirm{
-	float: right;
-	margin-right: 20px;
-	margin-top: 20px;
+	height: 38%;
+	background: url(../images/content.png);
+	background-size: cover;
 }
 
 .footer{
 	margin-top: 3%;
+}
+
+.course-infos {
+    position: relative;
+    margin-left: 8%;
+    margin-top: 2%;
+}
+
+.course-infos .w {
+    height: 200px;
+}
+
+.course-infos h2 {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 8px;
+    line-height: 48px;
+    font-size: 32px;
+    color: #fff;
+}
+
+.course-infos .statics {
+    color: #fff;
+    font-size: 0px;
+    position: relative;
+    z-index: 3;
+}
+
+.course-infos .statics .teacher-info {
+    position: relative;
+    padding-left: 56px;
+    padding-right: 60px;
+    line-height: 12px;
+    font-size: 12px;
+}
+
+.course-infos .statics .teacher-info img {
+    float: left;
+    margin-left: -56px;
+    width: 48px;
+    height: 48px;
+    border-radius: 100%;
+}
+
+.course-infos .statics .teacher-info i{
+    color: #f01400;
+    font-size: 16px;
+    margin: 0 0 0 8px;
+    vertical-align: -2px;
+}
+
+.course-infos .statics .teacher-info .tit {
+    display: block;
+    margin-top: 3px;
+    margin-left: 5px;
+}
+
+.course-infos .statics .teacher-info .tit a {
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.course-infos .statics .teacher-info .job {
+    font-size: 12px;
+    line-height: 18px;
+    margin-left: 5px;
+}
+
+
+/*@media screen and (max-width:1200px)*/
+.course-infos .statics .static-item {
+    width: 100px;
+}
+
+.course-infos .statics .static-item {
+    display: inline-block;
+    position: relative;
+    margin-right: 16px;
+    font-size: 12px;
+    top: 15px;
+}
+
+.l {
+    float: left;
+}
+
+.course-infos .statics .static-item .meta {
+    padding-right: 8px;
+    line-height: 12px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+
+.course-infos .opebut{
+    color: #fff;
+    font-size: 0px;
+    position: relative;
+    float: right;
+    z-index: 3;
+    margin-top:-30px;
+    margin-right: 5%;
+}
+
+#confirm{
+    width: 200px;
+    background-color: #f20d0d;
+    border-color: #FFA500;
+}
+
+#confirm:hover{
+    background-color: #c20a0a;
+}
+
+.course-wrap {
+    margin-bottom: 8px;
+    margin-top: 3%;
+    padding: 24px 32px 32px;
+    background: #FFF;
+    box-shadow: 0 8px 16px 0 rgba(7,17,27,.1);
+    border-radius: 12px;
+}
+
+.course-wrap h3{
+    margin-top: 0;
+}
+
+.course-wrap p{
+    font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+    font-size: 14px;
+    margin-bottom: 0;
+    margin-top: 10px;
+}
+
+.course-wrap span{
+    font-size: 16px;
+    font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+
+}
+
+.course-wrap i{
+    font-size: 16px;
 }

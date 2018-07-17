@@ -75,18 +75,22 @@
 
 </div>
 
-<div class="col-xs-10">
-         <div class="meeting">  
-     <ul class="meet-list" id="meetlist">  
-       <li>  
-         <img src="../images/logo1.png" />  
-         <h3>Headline</h3>  
-         <p>Lorem ipsum dolor sit amet...</p>  
-       </li>  
+<div class="container">
 
-     </ul>  
-   </div> 
+    <div class="meeting">
+        <div class="meeting-list">
+            <div class="clearfix">
+                <div class="course-card-container">
+                        
+                </div>
+            </div>
+
+        </div>
+
+    </div>  
+
 </div>
+
 
 
 <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
@@ -94,7 +98,7 @@
  
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/attend.js"></script>
- <script type="text/javascript" src="${pageContext.request.contextPath}/js/manageApplylist.js"></script>
+ <script type="text/javascript" src="${pageContext.request.contextPath}/js/allmeetings.js"></script>
  
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/nav.js"></script>
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

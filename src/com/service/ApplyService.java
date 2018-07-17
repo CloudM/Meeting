@@ -8,4 +8,5 @@ public interface ApplyService {
 	public Apply SIsApply(int uid,int mid);
 	public boolean SSetApplyState(Apply apply);
 	public boolean SSetApplyState(int state,int mid,int uid);
+	public boolean SDeleteApply(int mid,int uid);
 }

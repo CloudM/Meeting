@@ -38,4 +38,10 @@ public class ApplyDaoImpl extends DBDao implements ApplyDao{
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	
+	public int DeleteApply(int uid,int mid) {
+		String sql = "delete from applylist where MeetingID=? and UserID=?";
+		Object[] obs = {mid,uid};
+		return ExecuteUpdate(sql,obs);
+	}
 }

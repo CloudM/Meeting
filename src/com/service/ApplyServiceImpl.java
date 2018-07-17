@@ -29,12 +29,13 @@ public class ApplyServiceImpl implements ApplyService{
 		ResultSet rs=dao.IsApply(uid,mid);
 		try {
 		if(rs.next()==true) {
-			
+			while(rs.next()) {
 				A.setApplyFormID(dao.IsApply(uid,mid).getInt(1));
 				A.setMeetingID(dao.IsApply(uid,mid).getInt(2));
 				A.setUserID(dao.IsApply(uid,mid).getInt(3));
 				A.setNote(dao.IsApply(uid,mid).getString(4));
 				A.setApplyState(dao.IsApply(uid,mid).getInt(5));
+			}
 		}
 		else {
 			A=null;
@@ -58,4 +59,11 @@ public class ApplyServiceImpl implements ApplyService{
 		}
 		return false;
 	}
+	public boolean SDeleteApply(int mid,int uid) {
+		if(dao.DeleteApply(mid,uid) > 0) {
+			return true;
+		}
+		return false;
+	}
 }
+

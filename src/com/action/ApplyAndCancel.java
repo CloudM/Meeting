@@ -28,28 +28,44 @@ public class ApplyAndCancel extends HttpServlet {
         super();
     }
     
-	protected void service(HttpServletRequest request, HttpServletResponse response) 
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
+		System.out.println("jump into applyandcancelservlet");
 		User u = (User)request.getSession().getAttribute("User");
 		int uid=u.getUid();
-		int mid=3;
-				//(int)request.getSession().getAttribute("Meetingid");
+		System.out.println("userid:"+uid);
+		int mid=(int)request.getSession().getAttribute("Meetingid");
+		System.out.println("meetingid:"+mid);
 		request.getSession().setAttribute("Meetingid", 0);
 		
 		a.setApplyState(1);
 		a.setMeetingID(mid);
 		a.setUserID(uid);
+		System.out.println("meetingid:"+mid);
 		if(service.SIsApply(uid,mid)!=null) {
-	    		if(service.SSetApplyState(2, mid, uid)) {
-	    			request.getRequestDispatcher("content.jsp").forward(request, response);
+			System.out.println("apply is not null");
+	    		if(service.SDeleteApply(mid,uid)) {
+	    			System.out.println("mid:"+mid);
+	    			System.out.println("uid"+uid);
+	    			//service.SDeleteApply(mid, uid);
+	    			System.out.println("cancelapply");
+	    			request.getRequestDispatcher("jsp/attend.jsp").forward(request, response);
+	    		}
+	    		else {
+	    			System.out.println("delete failed");
+	    			request.getRequestDispatcher("jsp/attend.jsp").forward(request, response);
 	    		}
 	    
 		 }
 		 else {
               if(service.SAddApply(a)) {
-			   request.getRequestDispatcher("content.jsp").forward(request, response);
+            	  System.out.println("applymeeting");
+			   request.getRequestDispatcher("jsp/attend.jsp").forward(request, response);
               }
 		 }
+		
+		
+
 	/*	//锟斤拷取锟斤拷锟斤拷锟絬ser锟斤拷锟斤拷锟斤拷息锟斤拷
 		User u = (User)request.getAttribute("User");
 		a.setUserID(u.getUid());
@@ -109,4 +125,8 @@ public class ApplyAndCancel extends HttpServlet {
 	  		}
 		}*/
 	}
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+ 		doPost(request, response);
+	}
+
 }
