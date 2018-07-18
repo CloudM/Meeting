@@ -14,6 +14,28 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 public class MeetingServiceImpl implements MeetingService{
 	MeetingDao dao = new MeetingDaoImpl();
+
+    ApplyService ser=new ApplyServiceImpl();
+	//change meeting typeid to string
+	public String TypeToString(int typeID) {
+		String type=null;
+		if(typeID==1){
+			type="研讨会";
+		}else if(typeID==2){
+			type="论坛";
+		}else if(typeID==3){
+			type="座谈会";
+		}else if(typeID==4){
+			type="专题讨论会";
+		}else if(typeID==5){
+			type="讲座";
+		}else if(typeID==6){
+			type="辩论会";
+		}else if(typeID==7){
+			type="其他";
+		}
+		return type;
+	}
 //turn the result of adding meeting to boolean
 	public boolean SAddMeeting(Meeting m) {
 		if (dao.AddMeeting(m)>0) {
@@ -106,8 +128,11 @@ public class MeetingServiceImpl implements MeetingService{
 			while(rs.next()) {
 				//Meeting m=new Meeting();
 				JSONObject m = new JSONObject();
+				String type=TypeToString(rs.getInt(2));
+				int count=ser.SCountApply(rs.getInt(1),2);
+	    			
 				m.put("Mid",rs.getInt(1));
-				m.put("Typeid",rs.getInt(2));
+				m.put("Typeid",type);
 				m.put("Userid",rs.getInt(3));
 				m.put("MeetingStatus",rs.getInt(4));
 				m.put("StartTime",rs.getString(5));
@@ -119,6 +144,7 @@ public class MeetingServiceImpl implements MeetingService{
 				m.put("SetTime",rs.getString(12));
 				m.put("Mname",rs.getString(13));
 				m.put("Host",rs.getString(14));
+				m.put("count", count);
 				M.add(m);
 				}
 			} catch (SQLException e2) {
@@ -137,8 +163,11 @@ public JSONArray SallMeetings() {
 		while(rs.next()) {
 			//Meeting m=new Meeting();
 			JSONObject m = new JSONObject();
+			String type=TypeToString(rs.getInt(2));
+			int count=ser.SCountApply(rs.getInt(1),2);
+			
 			m.put("Mid",rs.getInt(1));
-			m.put("Typeid",rs.getInt(2));
+			m.put("Typeid",type);
 			m.put("Userid",rs.getInt(3));
 			m.put("MeetingStatus",rs.getInt(4));
 			m.put("StartTime",rs.getString(5));
@@ -150,6 +179,7 @@ public JSONArray SallMeetings() {
 			m.put("SetTime",rs.getString(12));
 			m.put("Mname",rs.getString(13));
 			m.put("Host",rs.getString(14));
+			m.put("count", count);
 			M.add(m);
 			}
 		} catch (SQLException e2) {
@@ -167,6 +197,8 @@ public JSONArray SapplyedMeeting(int uid,int stateid) {
 		while(rs.next()) {
 			//Meeting m=new Meeting();
 			JSONObject m = new JSONObject();
+			int count=ser.SCountApply(rs.getInt(1),2);
+			
 			m.put("Mid",rs.getInt(1));
 			m.put("Typeid",rs.getInt(2));
 			m.put("Userid",rs.getInt(3));
@@ -180,6 +212,7 @@ public JSONArray SapplyedMeeting(int uid,int stateid) {
 			m.put("SetTime",rs.getString(12));
 			m.put("Mname",rs.getString(13));
 			m.put("Host",rs.getString(14));
+			m.put("count", count);
 			M.add(m);
 			}
 		} catch (SQLException e2) {

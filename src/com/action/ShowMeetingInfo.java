@@ -21,10 +21,13 @@ import com.entity.Meeting;
 import com.entity.User;
 import com.function.Cookies;
 import com.function.SessionContext;
+import com.service.ApplyService;
+import com.service.ApplyServiceImpl;
 import com.service.MeetingService;
 import com.service.MeetingServiceImpl;
 
 import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 
 @WebServlet("/ShowMeetingInfo")
 public class ShowMeetingInfo extends HttpServlet {
@@ -67,6 +70,7 @@ public class ShowMeetingInfo extends HttpServlet {
 	    MeetingService service=new MeetingServiceImpl();
 	    JSONArray Mlist = new JSONArray();
 	    //search all meetings
+	    
 	    if(method.equals("all.do")){
 	    	if(service.SallMeetings()!=null) {
 	    		Mlist=service.SallMeetings();
