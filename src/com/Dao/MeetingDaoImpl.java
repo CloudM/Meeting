@@ -57,7 +57,7 @@ public class MeetingDaoImpl extends DBDao implements  MeetingDao{
 	//find all meetings
 	//return reultset
 	public ResultSet allMeetings() {
-		String sql = "select * from meeting";
+		String sql = "select * from meeting where MeetingStateID = 2";
 		Object[] obs = {};
 		return ExecuteQuery(sql,obs);
 	}

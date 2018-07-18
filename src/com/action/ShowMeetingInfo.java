@@ -28,14 +28,14 @@ import net.sf.json.JSONArray;
 
 @WebServlet("/ShowMeetingInfo")
 public class ShowMeetingInfo extends HttpServlet {
-	MeetingService ms = new MeetingServiceImpl();
-       
+	
     public ShowMeetingInfo() { 
     	super();
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
+		request.setCharacterEncoding("UTF-8");
 		User user = (User)request.getSession().getAttribute("User");
 		int uid=user.getUid();
 		//1.获取能够与“url-pattern”中匹配的路径
@@ -43,7 +43,7 @@ public class ShowMeetingInfo extends HttpServlet {
 		//(此时处理的请求是查询 query.do)
 		System.out.println("request.getServletPath()获取的值为: " + method);//输出 /query.do
 		//2.通过字符串截取，把方法名 query 截取出来
-		method = method.substring(1, method.length()-3);
+		method = method.substring(method.length()-6,method.length());
 		System.out.println("截取后的值为: "+ method);
 		
 /*		Cookie[] cookies=request.getCookies();
@@ -67,7 +67,7 @@ public class ShowMeetingInfo extends HttpServlet {
 	    MeetingService service=new MeetingServiceImpl();
 	    JSONArray Mlist = new JSONArray();
 	    //search all meetings
-	    if(method.equals("jsp/all")){
+	    if(method.equals("all.do")){
 	    	if(service.SallMeetings()!=null) {
 	    		Mlist=service.SallMeetings();
 	    	    System.out.println("Mlist.size:"+Mlist.size());
@@ -82,10 +82,10 @@ public class ShowMeetingInfo extends HttpServlet {
 	    
 	    //see which status is transfered from js
 	    else {
-	    	if(method.equals("jsp/created")) {
+	    	if(method.equals("ted.do")) {
 	    		status1=1;
 	    		}
-	        else if(method.equals("jsp/released")) {
+	        else if(method.equals("sed.do")) {
 	    	    status1=2;
 	    	    status2=3;
 		        }

@@ -14,5 +14,9 @@ public interface ApplyDao {
 	//��������״̬
 	public int SetApplyState(Apply apply);
 	public int SetApplyState(int state,int mid,int uid);
-	public int DeleteApply(int uid,int mid);
+	public int DeleteApply(int mid,int uid);//delete apply 
+	//select all applies of a meeting
+	public ResultSet searchApply(int mid);
+	public int UpdateApply(int uid, int mid);
+	public ResultSet CountApply(int mid,int status);
 }

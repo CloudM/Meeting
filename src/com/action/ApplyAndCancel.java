@@ -30,6 +30,8 @@ public class ApplyAndCancel extends HttpServlet {
     
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
+		response.setContentType("text/html;charset=UTF-8");
+		request.setCharacterEncoding("UTF-8");
 		System.out.println("jump into applyandcancelservlet");
 		User u = (User)request.getSession().getAttribute("User");
 		int uid=u.getUid();
@@ -44,17 +46,26 @@ public class ApplyAndCancel extends HttpServlet {
 		System.out.println("meetingid:"+mid);
 		if(service.SIsApply(uid,mid)!=null) {
 			System.out.println("apply is not null");
-	    		if(service.SDeleteApply(mid,uid)) {
-	    			System.out.println("mid:"+mid);
-	    			System.out.println("uid"+uid);
+			if(service.SIsApply(uid,mid).getApplyState()==3) {
+				if(service.SUpdateApply(uid, mid)) {
+					System.out.println("applymeeting");
+					   request.getRequestDispatcher("jsp/attend.jsp").forward(request, response);
+					   }
+				}
+			else {
+				if(service.SDeleteApply(mid,uid)) {
+					/*System.out.println("mid:"+mid);
+				
+	    			System.out.println("uid"+uid);*/
 	    			//service.SDeleteApply(mid, uid);
 	    			System.out.println("cancelapply");
 	    			request.getRequestDispatcher("jsp/attend.jsp").forward(request, response);
-	    		}
+	    			}
 	    		else {
 	    			System.out.println("delete failed");
-	    			request.getRequestDispatcher("jsp/attend.jsp").forward(request, response);
+	    			request.getRequestDispatcher("/jsp/attend.jsp").forward(request, response);
 	    		}
+			}
 	    
 		 }
 		 else {

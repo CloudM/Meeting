@@ -33,7 +33,8 @@ public class MeetingAction extends HttpServlet {
 	Meeting meeting=new Meeting();
 	
  public void doPost(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException{
-	 response.setContentType("text/html;charset=UTF-8");
+		response.setContentType("text/html;charset=UTF-8");
+		request.setCharacterEncoding("UTF-8");
 	 User user = (User)request.getSession().getAttribute("User");
 	 
 	 meeting=null;
@@ -83,7 +84,7 @@ public class MeetingAction extends HttpServlet {
 	 m.setDescribe(request.getParameter("introduction"));
 	 m.setGuest(request.getParameter("guest"));
 	 m.setPlace(request.getParameter("place"));
-	 m.setRemarks(request.getParameter("remark"));
+	 m.setRemarks(request.getParameter("remarks"));
 	 m.setStartTime(request.getParameter("time"));
 	 if(request.getParameter("type").equals("yantaohui")) {
 		 m.setTypeid(1);

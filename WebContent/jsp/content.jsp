@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" import="com.entity.Meeting" import="com.entity.User" import="com.service.MeetingServiceImpl" import="com.service.MeetingService" import="com.service.UserService" import="com.service.UserServiceImpl" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -55,13 +55,63 @@
       </div>
     </div>
 
+
+<%
+int mid=(int)request.getSession().getAttribute("Meetingid");
+Meeting meeting=new Meeting();
+User user=new User();
+MeetingService service=new MeetingServiceImpl();
+UserService ser=new UserServiceImpl();
+meeting=service.SFindMeeting(mid);
+int userid=meeting.getUserid();
+user=ser.SgetUser(userid);
+
+String meetingname=meeting.getMname();
+String username=user.getUname();
+String job=user.getJob();
+String starttime=meeting.getStartTime();
+int typeID=meeting.getTypeid();
+String place=meeting.getPlace();
+String host=meeting.getHost();
+String guest=meeting.getGuest();
+String describe=meeting.getDescribe();
+String remark=meeting.getRemarks();
+String type=null;
+if(typeID==1){
+	type="研讨会";
+}else if(typeID==2){
+	type="论坛";
+}else if(typeID==3){
+	type="座谈会";
+}else if(typeID==4){
+	type="专题讨论会";
+}else if(typeID==5){
+	type="讲座";
+}else if(typeID==6){
+	type="辩论会";
+}else if(typeID==7){
+	type="其他";
+}
+
+request.getSession().setAttribute("name", meetingname);
+request.getSession().setAttribute("host", host);
+request.getSession().setAttribute("guest", guest);
+request.getSession().setAttribute("time", starttime);
+request.getSession().setAttribute("place", place);
+request.getSession().setAttribute("introduction", describe);
+request.getSession().setAttribute("remarks", remark);
+request.getSession().setAttribute("username", username);
+request.getSession().setAttribute("job", job);
+request.getSession().setAttribute("type", type);
+
+%>
 <div class="container" id="container1">
 
 <div class="course-infos">
     <div class="w pr">
       
         <div class="hd clearfix">
-            <h2 class="l">关于企业发展战略研讨会</h2>
+            <h2 class="l">${name}</h2>
                     </div>
 
         <div class="statics clearfix">
@@ -70,24 +120,24 @@
                 <img data-userid="3409088" class="js-usercard-dialog" src="../images/tou.png" width="80" height="80">
             </a>
             <span class="tit">
-                <a href="/u/3409088/courses?sort=publish" target="_blank">江户川柯南</a><i class="fab fa-mixcloud"></i>
+                <a href="/u/3409088/courses?sort=publish" target="_blank">${username}</a><i class="fab fa-mixcloud"></i>
             </span>
-            <span class="job">经理</span>
+            <span class="job">${job}</span>
                     </div>
                 
             <div class="static-item l">
-                <span class="meta">时间</span><span class="meta-value">2018.7.22</span>
+                <span class="meta">时间</span><span class="meta-value">${time}</span>
             </div>
             <div class="static-item l">
-                <span class="meta">会议类型</span><span class="meta-value">批斗会</span>
+                <span class="meta">会议类型</span><span class="meta-value">${type}</span>
             </div>
             <div class="static-item l">
-                <span class="meta">已参与人数</span><span class="meta-value js-learn-num">23</span>
+                <span class="meta">已参与人数</span><span class="meta-value js-learn-num">${count}</span>
             </div>
-            <div class="static-item l score-btn">
+           <!--  <div class="static-item l score-btn">
                 <span class="meta">预计人数</span><span class="meta-value">100</span>
                                 
-            </div>
+            </div> -->
           
 
         </div>
@@ -113,27 +163,34 @@
         <div class="course-wrap">
           <h3>简介</h3>
           <p>
-            引进资源建设是高校图书馆建设的重要组成部分。目前国外引进数据库越来越多，各种名义的用户会和培训活动也日渐增加。为了帮助成员馆全面了解整个引进数据库行业的发展趋势、合理搭配和使用引进数据库资源，从2002年5月开始，CALIS管理中心已连续十三届成功举办了国外引进数据库培训周活动。参会代表和数据库商对此项活动给予一致认可，它正逐步成为图书馆界有影响力的活动之一。 
-          </p>
+            ${introduction}
+            </p>
+           
+        </div>
+        <div class="course-wrap">
+          <h3>备注</h3>
+          <p>
+           ${remarks}
+              </p>
            
         </div>
 
 
 <div class="course-wrap">
           <h3>主办方</h3>
-         <i class="fab fa-meetup"></i>&nbsp;<span>武汉大学国际软件学院</span>
+         <i class="fab fa-meetup"></i>&nbsp;<span> ${host}</span>
     </div>
 
     <div class="course-wrap">
           <h3>地点</h3>
-         <i class="fas fa-map-marker-alt"></i>&nbsp;<span>湖北省武汉市武汉大学信息学部</span>
+         <i class="fas fa-map-marker-alt"></i>&nbsp;<span> ${place}</span>
     </div>
 
 <div class="course-wrap">
           <h3>出场嘉宾</h3>
-         <p><i class="far fa-user-circle"></i>&nbsp;<span>院长：xxx</span></p>
-         <p><i class="far fa-user-circle"></i>&nbsp;<span>副院长：xxx</span></p>
-         <p><i class="far fa-user-circle"></i>&nbsp;<span>专家：xxx</span></p>
+         <p><i class="far fa-user-circle"></i>&nbsp;<span> ${guest}</span></p>
+        <!--  <p><i class="far fa-user-circle"></i>&nbsp;<span>副院长：xxx</span></p>
+         <p><i class="far fa-user-circle"></i>&nbsp;<span>专家：xxx</span></p> -->
     </div>
 
 </div>

@@ -1,12 +1,14 @@
 package com.entity;
 
 public class Apply {
-	private int ApplyFormID = 0;
-	private int MeetingID = 0;
-	private int UserID = 0;
-	private String Note = null;
-	//1代表已提交但未处理，2代表通过，3代表未通过,4表示已取消
-	private int ApplyState = 1;
+	private int ApplyFormID;
+	private int MeetingID;
+	private int UserID;
+	private String Note;
+	private String ApplyTime;
+	private String CheckTime;
+	//1代表已提交但未处理，2代表通过，3代表未通过,4表示已取消,meiyou4
+	private int ApplyState;
 	public int getApplyFormID() {
 		return ApplyFormID;
 	}
@@ -36,5 +38,18 @@ public class Apply {
 	}
 	public void setApplyState(int applyState) {
 		ApplyState = applyState;
+	}
+	
+	public String getApplyTime() {
+		return ApplyTime;
+	}
+	public void setApplyTime(String ApplyTime) {
+		Note = ApplyTime;
+	}
+	public String getCheckTime() {
+		return CheckTime;
+	}
+	public void setCheckTime(String CheckTime) {
+		Note = CheckTime;
 	}
 }

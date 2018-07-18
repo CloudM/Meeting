@@ -25,6 +25,7 @@ public class SearchMeeting extends HttpServlet{
 	
 	public void doPost(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException{
 		response.setContentType("text/html;charset=UTF-8");
+		request.setCharacterEncoding("UTF-8");
 		//1.获取能够与“url-pattern”中匹配的路径
 				String method = request.getServletPath();
 				//(此时处理的请求是查询 query.do)

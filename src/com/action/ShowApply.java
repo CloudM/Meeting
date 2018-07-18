@@ -26,7 +26,7 @@ public class ShowApply extends HttpServlet{
 	
 	public void doPost(HttpServletRequest request,HttpServletResponse response)throws ServletException, IOException{
 		 response.setContentType("text/html;charset=UTF-8");
-		 
+		 request.setCharacterEncoding("UTF-8");
 		 Apply apply=new Apply();
 		 User user = (User)request.getSession().getAttribute("User");
 		 int uid=user.getUid();
@@ -51,20 +51,26 @@ public class ShowApply extends HttpServlet{
 		 User user1=(User) sess.getAttribute("User"); */
 		 System.out.println("showapply");
 		 //check whether the user has applyed the meeting
+		 int count=service.SCountApply(mid, 2);
+		 request.setAttribute("count", count);
 		 if(service.SIsApply(uid,mid)!=null) {
 			 /*String applyid=apply.getApplyFormID()+"";
 			 Cookie cookie = new Cookie("ApplyId",applyid);
 	    	 response.addCookie(cookie);*/
-	    	 String s="取消申请";
-	    	 System.out.println("isapply is not null");
-	    	 request.setAttribute("buttonname", s);
-			 request.getRequestDispatcher("content.jsp").forward(request, response);
+			 System.out.println("isapply is not null");
+			 if(service.SIsApply(uid,mid).getApplyState()==3) {
+				 String s="申请参加";
+		    	 request.setAttribute("buttonname", s);
+				 request.getRequestDispatcher("content.jsp").forward(request, response); 
+			 }
+			 else {
+				 String s="取消申请";
+	    	     request.setAttribute("buttonname", s);
+			     request.getRequestDispatcher("content.jsp").forward(request, response);
+			     }
 		 }
 		 else {
-			/* String meetingid=apply.getMeetingID()+"";
-			 Cookie cookie = new Cookie("ApplyId",meetingid);
-	    	 response.addCookie(cookie);
-	    	 response.addCookie(cookie);*/
+		
 	    	 System.out.println("isapply is null");
 	    	 String s="申请参加";
 	    	 request.setAttribute("buttonname", s);

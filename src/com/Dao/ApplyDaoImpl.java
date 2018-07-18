@@ -8,7 +8,7 @@ import com.entity.Apply;
 
 public class ApplyDaoImpl extends DBDao implements ApplyDao{
 	public int SetApplyState(int state,int mid,int uid) {
-		String sql="UPDATE ApplyList SET ApplyState = ? WHERE MeetingID = ? AND UserID = ?";
+		String sql="UPDATE ApplyList SET ApplyState = ?,CheckTime=now() WHERE MeetingID = ? AND UserID = ?";
 		 Object[] obs={state, mid, uid};
 		return ExecuteUpdate(sql, obs);
 	}
@@ -20,12 +20,17 @@ public class ApplyDaoImpl extends DBDao implements ApplyDao{
 	}
 	
 	public int AddApply(Apply apply) {
-		String sql = "INSERT INTO ApplyList VALUES(?,?,?,?,?)";
+		String sql = "INSERT INTO ApplyList VALUES(?,?,?,?,?,now(),null)";
 		Object[] obs = {apply.getApplyFormID(),apply.getMeetingID(),
 				apply.getUserID(),apply.getNote(),apply.getApplyState()};
 		return ExecuteUpdate(sql,obs);
 	}
 
+	public int UpdateApply(int uid, int mid) {
+		String sql="update applylist set ApplyState = 1,ApplyTime=now(),CheckTime=null where MeetingID = ? AND UserID = ?";
+		Object[] obs= {};
+		return ExecuteUpdate(sql,obs);
+	}
 	
 	public ResultSet IsApply(int uid,int mid) {
 		String sql="SELECT * FROM applylist WHERE MeetingID = ? AND UserID = ?";
@@ -38,10 +43,20 @@ public class ApplyDaoImpl extends DBDao implements ApplyDao{
 		// TODO Auto-generated method stub
 		return 0;
 	}
-	
-	public int DeleteApply(int uid,int mid) {
+	//delete apply
+	public int DeleteApply(int mid,int uid) {
 		String sql = "delete from applylist where MeetingID=? and UserID=?";
 		Object[] obs = {mid,uid};
 		return ExecuteUpdate(sql,obs);
+	}
+	public ResultSet searchApply(int mid) {
+		String sql="SELECT * FROM applylist WHERE MeetingID = ?";
+		Object[] obs= {mid};
+		return ExecuteQuery(sql,obs);
+	}
+	public ResultSet CountApply(int mid,int status) {
+		String sql="SELECT count(ApplyFormID) FROM applylist WHERE MeetingID = ? and ApplyState=?";
+		Object[] obs= {mid,status};
+		return ExecuteQuery(sql,obs);
 	}
 }
