@@ -1,8 +1,86 @@
-#info{
-	width: 80%;
-	margin-left: auto;
-	margin-right: auto;
+.course-wrap {
+    margin-bottom: 1%;
+    margin-top: 3%;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 24px 32px 32px;
+    background: #FFF;
+    box-shadow: 0 8px 16px 0 rgba(7,17,27,.1);
+    border-radius: 12px;
+    overflow: scroll;
+    overflow-x:hidden;
+    height: 940px;
 }
+
+
+.course-wrapl {
+    margin-bottom: 1%;
+    margin-top: 3%;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 10px;
+    background: #FFF;
+    box-shadow: 0 8px 16px 0 rgba(7,17,27,.1);
+    border-radius: 12px;
+    height: 950px;
+}
+
+
+.card-list{  
+    list-style-type: none;  
+    width: 100%;  
+    padding: 0;
+} 
+
+
+.card-list .leftpart{
+    width: 30%;
+    float: left;
+    font-size: 15px;
+}
+
+.card-list .rightpart{
+    width: 70%;
+    float: right;
+}   
+
+
+.card-list h3 {  
+    font: bold 20px/1.5 Helvetica, Verdana, sans-serif;  
+}  
+
+.card-list li .name-info {  
+    float: left;  
+    margin: 0 15px 0 0;  
+    position: absolute;
+    top: 40%;
+    transform: translateY(-50%);
+}  
+
+.card-list li p {  
+    font: 200 14px/1.5 Georgia, Times New Roman, serif;  
+    padding-top: 10px;
+}  
+
+.card-list li {  
+    padding: 10px;  
+    overflow: auto;  
+    border: 1px;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: #eee;
+    margin-bottom: 25px;
+    position: relative;
+}  
+
+.card-list li .name-info{
+    font-size: 18px;
+    margin: 10px;
+}           
+.card-list li:hover {  
+    background: #eee;  
+    cursor: pointer;  
+} 
 
 .operation{	
 	width: 20%;
@@ -10,19 +88,59 @@
 }
 
 
-#con1{
+.card-list .opebut{
 	float: right;
-	height: 100%;
-	margin-left: auto;
-	margin-right: auto;
+	margin-top:-8%; 
 }
-#con2{
-	float: left;
-	height: 100%;
-	margin-left: auto;
-	margin-right: auto;
-}
+
 
 .footer{
 	margin-top: 3%;
+}
+
+.info-wapper {
+    margin: 24px auto 24px 10%;
+}
+
+.info-box div {
+    width: 50%;
+    line-height: 20px;
+    padding: 20px 0 20px 22px;
+    border-bottom: 1px solid #d9dde1;
+}
+
+.form-control{
+	background: #f0f0f0;
+    border: none;
+    border-radius: 20px;
+    box-shadow: none;
+    transition: all 0.3s ease 0s;
+    float: right;
+    margin-right: 5%;
+    width: 61%;
+    height: 40px;
+}
+
+.info{
+    margin-right: 6%;
+    margin-left: 1%;
+    padding: 0;
+}
+
+.common-title {
+	margin-left: 10px;
+    line-height: 40px;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.info-box {
+    margin-bottom: 12px;
+}
+
+
+#longtext1,#longtext2{
+	height: 100px;
+	width: 100%;
+	overflow: scroll;
 }

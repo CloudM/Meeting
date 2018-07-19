@@ -131,17 +131,30 @@ public class MeetingAction extends HttpServlet {
 public void CreateMeeting(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
 	
 	if(meeting!=null) {
-		if(service.SUpdateMeeting(m,meeting.getMid())==true) {
-			 System.out.println("修改会议成功");
+		if(meeting.getMeetingStatus()==1) {
+			if(service.SUpdateMeeting(m,meeting.getMid())==true) {
+				System.out.println("修改会议成功");
 	    		PrintWriter out=response.getWriter();
-	    		
+	    		request.getSession().setAttribute("Meeting", m);
 	    		//request.getRequestDispatcher("history.back()").forward(request, response);
 	    		out.print("<script language='javascript'>alert('修改会议成功');window.location.href='jsp/center-org-script.jsp';</script>");
+	    		}
+			else {
+				System.out.println("修改会议失败，请检查所填信息");
+				}
 			}
-		 else {
+		
+	else if(meeting.getMeetingStatus()==2) {
+		if(service.SUpdateMeeting(m,meeting.getMid())==true) {
+			System.out.println("修改会议成功");
+    		PrintWriter out=response.getWriter();//request.getRequestDispatcher("history.back()").forward(request, response);
+    		out.print("<script language='javascript'>alert('修改会议成功');window.location.href='jsp/"+meeting.getMid()+".searchMeeting';</script>");
+    		}
+		else {
 			System.out.println("修改会议失败，请检查所填信息");
 			}
-   }
+		}
+	}
 	else {
 	 try {
 		 //service.SAddMeeting(m);
@@ -227,7 +240,7 @@ public void CreateMeeting(HttpServletRequest request,HttpServletResponse respons
 			 
 		 }
 		 else{
-			 System.out.println("发删除会议失败");
+			 System.out.println("删除会议失败");
 			 PrintWriter out=response.getWriter();
 			 out.print("<script language='javascript'>alert('删除会议失败，请检查会议信息填写是否正确');window.location.href='jsp/createandrelease.jsp';</script>");
 			 

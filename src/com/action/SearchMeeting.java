@@ -43,7 +43,13 @@ public class SearchMeeting extends HttpServlet{
 					System.out.println(meeting.getMid());
 					request.getSession().setAttribute("Meeting", meeting);
 					//response.getWriter().println(meeting); 
-					request.getRequestDispatcher("/jsp/createandrelease.jsp").forward(request, response);	
+					if(meeting.getMeetingStatus()==1) {
+						request.getRequestDispatcher("/jsp/createandrelease.jsp").forward(request, response);
+					}
+					else if(meeting.getMeetingStatus()==2) {
+						request.getRequestDispatcher("/jsp/confirm.jsp").forward(request, response);
+					}
+					
 				}
 				else {
 					//request.getRequestDispatcher("jsp/center.jsp").forward(request, response);

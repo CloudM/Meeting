@@ -12,12 +12,21 @@ a:hover,a:focus{
 .footer{
 	margin-top:0;
 }
-/* 以上实际使用若已初始化可删除 */
+
+
+.container{
+	width: 100%;
+}
+
+.col-xs-3{
+	padding-left: 0;
+}
 
 /* nav */
 .nav1{
 	float: left;
 	margin-top: 0;
+	left: 0;
 	width: 250px;
 	height: 100%;
 	background: #263238;

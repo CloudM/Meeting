@@ -30,22 +30,22 @@ public class ApplyServiceImpl implements ApplyService{
 		Apply A = new Apply();
 		//A=null;
 		ResultSet rs=dao.IsApply(uid,mid);
-		try {
-		if(rs.next()==true) {
-			while(rs.next()) {
-				A.setApplyFormID(dao.IsApply(uid,mid).getInt(1));
-				A.setMeetingID(dao.IsApply(uid,mid).getInt(2));
-				A.setUserID(dao.IsApply(uid,mid).getInt(3));
-				A.setNote(dao.IsApply(uid,mid).getString(4));
-				A.setApplyState(dao.IsApply(uid,mid).getInt(5));
+			try {
+			if(rs != null) {
+				while(rs.next()) {
+					A.setApplyFormID(dao.IsApply(uid,mid).getInt(1));
+					A.setMeetingID(dao.IsApply(uid,mid).getInt(2));
+					A.setUserID(dao.IsApply(uid,mid).getInt(3));
+					A.setNote(dao.IsApply(uid,mid).getString(4));
+					A.setApplyState(dao.IsApply(uid,mid).getInt(5));
+				}
 			}
-		}
-		else {
-			A=null;
-		}
-			} catch (SQLException e) {
-				e.printStackTrace();
+			else {
+				A=null;
 			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 		return A;
 	}

@@ -1,6 +1,6 @@
 #container1{
 	width: 100%;
-	height: 180px;
+	height: 35%;
 	background: url(../images/banner.jpg);
 	background-size: cover;
 }
@@ -69,48 +69,24 @@
     line-height: 20px;
 }
 
-.leftnave{
-	position: absolute;
-	top:70px;
-	left: 0;
-	margin-bottom: 100px;
-    border-right: 1px;
-    border-right-style: solid;
-    border-radius: 10px;
+.course-wrap {
+    margin-bottom: 3%;
+    margin-top: 3%;
+    margin-right: 4%;
+    margin-left: 0;
+    padding: 24px 32px 32px;
+    background: #FFF;
+    box-shadow: 0 8px 16px 0 rgba(7,17,27,.1);
+    border-radius: 12px;
 }
 
-#naveul{
-	width: 180px;
-	text-align: left;
-    font-family: Helvetica;
-    font-size: 14px;
+.info{
+    margin-right: 6%;
+    margin-left: 1%;
 }
-
-.leftnave .ac{
-    margin: 20px;
-    height: 50px;
-}
-
-
-.nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus{
-    width: 140px;
-    color: #fff;
-    background-color:#1E90FF;
-    border:1px solid #a5b6c8;
-    margin-left: 5px;
-}
-
-.navbar-fixed-top ~ .content {
- padding-top: 70px;
-}
-.navbar-fixed-bottom ~ .content {
-  padding-bottom: 70px;
-}
-
 
 .common-title {
-	margin-top: 40px;
-	margin-left: 40px;
+	margin-top: 10px;
     line-height: 40px;
     font-size: 16px;
     font-weight: 700;
@@ -120,12 +96,10 @@
     height: 1px;
     background-color: #d0d6d9;
     margin-top: 12px;
-    margin-left: 40px;
-
 }
 
 .info-wapper {
-    margin: 24px auto 24px 60px;
+    margin: 24px auto 24px auto;
 }
 
 .info-box {
@@ -150,9 +124,15 @@
 }
 
 .reg{
-    font-size: 18px;
+    font-size: 14px;
     color: #11a3fc;
+    font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+    text-decoration: none;
     cursor: pointer;
+}
+
+.reg:hover{
+    color: #4169E1;
 }
 
 .form-horizontal .form-control1{
@@ -222,7 +202,7 @@
 
 .card-list{  
     list-style-type: none;  
-    width: 700px;  
+    width: 80%;  
 }  
 
 .card-list .leftpart{

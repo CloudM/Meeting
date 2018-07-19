@@ -4,5 +4,6 @@ encoding//WebContent/jsp/center-attend-wait.jsp=UTF-8
 encoding//WebContent/jsp/center-org-fini.jsp=UTF-8
 encoding//WebContent/jsp/center-org-have.jsp=UTF-8
 encoding//WebContent/jsp/center.jsp=UTF-8
+encoding//WebContent/jsp/confirm.jsp=UTF-8
 encoding//src/com/action/ApplyAndCancel.java=UTF-8
 encoding//src/com/action/MeetingAction.java=UTF-8

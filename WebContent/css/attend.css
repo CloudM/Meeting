@@ -1,8 +1,8 @@
 #container2{
 	width: 100%;
-	height: 100px;
+	height: 50px;
 	background-color: #fff;
-    margin-bottom: 20px;
+    margin-top: 10px;
 }
 
 .course-top {
@@ -54,7 +54,7 @@
 }
 
 .meeting {
-    padding: 10px 0 20px;
+    padding: 0 0;
 }
 
 .meeting-list {
@@ -71,21 +71,17 @@
     margin: 0 0 18px 18px;
     height: 256px;
     z-index: 0;
-    display:flex;
-    flex-direction:row;
 }
 
 .course-card-container {
-    width: 90%;
+    width: 216px;
     position: relative;
     transition: .3s all linear;
 }
-.course-card-body{
-	margin-left:30px;
-}
- .course-card-top {
+
+.course-card-container .course-card-top {
     width: 216px;
-    height: 150px;
+    height: 120px;
     position: relative;
     border-radius: 8px;
     transition: all .3s;
@@ -133,6 +129,7 @@
     -webkit-box-orient: vertical;
     max-height: 46px;
     transition: all .3s;
+    margin-top: 5px;
 }
 
 .course-card-container .course-card-content .course-card-info {

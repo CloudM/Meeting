@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+<%@ page language="java" import="com.entity.Meeting" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -59,7 +62,55 @@
                     
 <div class="course-wrapl">
 
-
+ <%
+					if((Meeting)request.getSession().getAttribute("Meeting")!=null){
+					Meeting meeting=(Meeting)request.getSession().getAttribute("Meeting");
+					String Name=meeting.getMname();
+					String Host=meeting.getHost();
+					//int type=meeting.getTypeid();
+					String Guest=meeting.getGuest();
+					String Time=meeting.getStartTime();
+					String Place=meeting.getPlace();
+					String Introduction=meeting.getDescribe();
+					String Remarks=meeting.getRemarks();
+					int typeID=meeting.getTypeid();
+					String type=null;
+					if(typeID==1){
+						type="研讨会";
+					}else if(typeID==2){
+						type="论坛";
+					}else if(typeID==3){
+						type="座谈会";
+					}else if(typeID==4){
+						type="专题讨论会";
+					}else if(typeID==5){
+						type="讲座";
+					}else if(typeID==6){
+						type="辩论会";
+					}else if(typeID==7){
+						type="其他";
+					}
+					
+					request.getSession().setAttribute("name", Name);
+					request.getSession().setAttribute("host", Host);
+					request.getSession().setAttribute("guest", Guest);
+					request.getSession().setAttribute("time", Time);
+					request.getSession().setAttribute("place", Place);
+					request.getSession().setAttribute("introduction", Introduction);
+					request.getSession().setAttribute("remarks", Remarks);
+					request.getSession().setAttribute("type", type);
+					}else{
+						request.getSession().setAttribute("name", null);
+						request.getSession().setAttribute("host", null);
+						request.getSession().setAttribute("guest", null);
+						request.getSession().setAttribute("time", null);
+						request.getSession().setAttribute("place", null);
+						request.getSession().setAttribute("introduction", null);
+						request.getSession().setAttribute("remarks", null);
+						request.getSession().setAttribute("type", null);
+					}
+					//request.getSession().setAttribute("name", Name);
+					%> 
 <div class="info">
     <div class="common-title">
                 会议信息
@@ -76,16 +127,16 @@
                     <h4 class="modal-title" id="myModalLabel">请输入修改信息</h4>
                   </div>
                   <div class="modal-body">
-                <form class="form-horizontal">
+                <form class="form-horizontal" action="${pageContext.request.contextPath}/CreateAndReleaseMeeting?doPost" method="post">
 
                    <div class="form-group">
                             <label class="reginfo">会议名称</label>
-                           <input type="email" class="form-control1" id="f-name" placeholder="输入会议名">
+                           <input type="text" class="form-control1" id="f-name" name="name" placeholder="输入会议名">
                         </div>
 
                         <div class="form-group">
                             <label class="reginfo">主办方</label>
-                            <input type="email" class="form-control1" id="f-org" placeholder="输入主办方">
+                            <input type="text" class="form-control1" id="f-org" name="host"placeholder="输入主办方">
                         </div>
 
                         <div class="form-group">
@@ -103,17 +154,17 @@
 
                       <div class="form-group">
                             <label class="reginfo">出席嘉宾</label>
-                            <input type="email" class="form-control1" id="f-guest" placeholder="输入出席嘉宾">
+                            <input type="text" class="form-control1" id="f-guest"  name="guest" placeholder="输入出席嘉宾">
                         </div>
 
                         <div class="form-group">
                             <label class="reginfo">会议时间</label>
-                            <input type="email" class="form-control1" id="f-time" placeholder="输入会议时间">
+                            <input type="textl" class="form-control1" id="f-time" name="time" placeholder="输入会议时间">
                         </div>
 
                         <div class="form-group">
                             <label class="reginfo">会议地点</label>
-                            <input type="email" class="form-control1" id="f-place" placeholder="输入会议地点">
+                            <input type="text" class="form-control1" id="f-place" name="place" placeholder="输入会议地点">
                         </div>
         
                         <div class="form-group">
@@ -127,15 +178,16 @@
                             <textarea rows="5" class="form-control" id="f-longtext2" cols="70" name="remarks"></textarea>
                             <i class="fa fa-user"></i>
                         </div>
+                        <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                  <button type="submit" name="create" class="btn btn-primary">提交</button>
+                </div>
 
 </form>
 
                 </div>
 
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                  <button type="button" class="btn btn-primary">提交</button>
-                </div>
+                
               </div><!-- /.modal-content -->
             </div><!-- /.modal -->
           </div>
@@ -146,43 +198,43 @@
      <div class="info-wapper">
                 <div class="info-box clearfix">
                     <label class="pull-left">会议名</label>
-                    <div class="pull-left" id="m-name">关于企业发展战略研讨会</div>
+                    <div class="pull-left" id="m-name">${name}</div>
                 </div>
 
                 <div class="info-box clearfix">
                     <label class="pull-left">主办方</label>
-                    <div class="pull-left" id="m-org">武汉大学国际软件学院</div>
+                    <div class="pull-left" id="m-org">${host}</div>
                 </div>
 
                 <div class="info-box clearfix">
                     <label class="pull-left">会议类型</label>
-                    <div class="pull-left">批斗会</div>
+                    <div class="pull-left">${type}</div>
                 </div>
 
                 <div class="info-box clearfix">
                     <label class="pull-left">出席嘉宾</label>
-                    <div class="pull-left" id="m-guest">院长：xxx</div>
+                    <div class="pull-left" id="m-guest">${guest}</div>
                 </div>
 
                 <div class="info-box clearfix">
                     <label class="pull-left">会议时间</label>
-                    <div class="pull-left" id="m-time">男</div>
+                    <div class="pull-left" id="m-time">${time}</div>
                 </div>
 
                 <div class="info-box clearfix">
                     <label class="pull-left">会议地点</label>
-                    <div class="pull-left" id="m-place">湖北省武汉市武汉大学信息学部</div>
+                    <div class="pull-left" id="m-place">${place}</div>
                 </div>
 
                  <div class="info-box clearfix">
                     <label class="pull-left">会议简介</label>
-                    <div class="pull-left" id="longtext1">引进资源建设是高校图书馆建设的重要组成部分。目前国外引进数据库越来越多，各种名义的用户会和培训活动也日渐增加。为了帮助成员馆全面了解整个引进数据库行业的发展趋势、合理搭配和使用引进数据库资源，从2002年5月开始，CALIS管理中心已连续十三届成功举办了国外引进数据库培训周活动。参会代表和数据库商对此项活动给予一致认可，它正逐步成为图书馆界有影响力的活动之一。 </div>
-                </div>
+                    <div class="pull-left" id="longtext1">${introduction}
+                    </div>
 
                 <div class="info-box clearfix">
                     <label class="pull-left">备注</label>
-                   <div class="pull-left" id="longtext2">引进资源建设是高校图书馆建设的重要组成部分。目前国外引进数据库越来越多，各种名义的用户会和培训活动也日渐增加。为了帮助成员馆全面了解整个引进数据库行业的发展趋势、合理搭配和使用引进数据库资源，从2002年5月开始，CALIS管理中心已连续十三届成功举办了国外引进数据库培训周活动。参会代表和数据库商对此项活动给予一致认可，它正逐步成为图书馆界有影响力的活动之一。 </div>
-                </div>
+                   <div class="pull-left" id="longtext2">${remarks}
+                   </div>
 
             </div>
 
@@ -194,9 +246,9 @@
 </div>
 
 
-
+</div>
                 </div>
-
+</div>
                  <div class="col-xs-7">
                      
 <div class="course-wrap">
@@ -222,124 +274,7 @@
 
      </li>  
 
-       <li data-toggle="modal" data-target="#infopannel">  
-        <div class="leftpart">
-          <span class="name-info">小明</span>  
-        </div>
-        <div class="rightpart">       
-          <p>
-           <span class="glyphicon glyphicon-user"></span>&nbsp;
-           <span class="company1-info">总经理</span>
-         </p>  
-        <span class="company2-info">xxxxxx公司</span>
-       </div>
 
-       <div class="opebut">
-           <button type="button" class="btn btn-success" id="con1">同意申请</button>
-
-            <button type="button" class="btn btn-warning" id="con2">拒绝申请</button>
-       </div>
-
-     </li>  
-
-<li data-toggle="modal" data-target="#infopannel">  
-        <div class="leftpart">
-          <span class="name-info">小明</span>  
-        </div>
-        <div class="rightpart">       
-          <p>
-           <span class="glyphicon glyphicon-user"></span>&nbsp;
-           <span class="company1-info">总经理</span>
-         </p>  
-        <span class="company2-info">xxxxxx公司</span>
-       </div>
-
-       <div class="opebut">
-           <button type="button" class="btn btn-success" id="con1">同意申请</button>
-
-            <button type="button" class="btn btn-warning" id="con2">拒绝申请</button>
-       </div>
-
-     </li>  
-
-     <li data-toggle="modal" data-target="#infopannel">  
-        <div class="leftpart">
-          <span class="name-info">小明</span>  
-        </div>
-        <div class="rightpart">       
-          <p>
-           <span class="glyphicon glyphicon-user"></span>&nbsp;
-           <span class="company1-info">总经理</span>
-         </p>  
-        <span class="company2-info">xxxxxx公司</span>
-       </div>
-
-       <div class="opebut">
-           <button type="button" class="btn btn-success" id="con1">同意申请</button>
-
-            <button type="button" class="btn btn-warning" id="con2">拒绝申请</button>
-       </div>
-
-     </li>  
-
-     <li data-toggle="modal" data-target="#infopannel">  
-        <div class="leftpart">
-          <span class="name-info">小明</span>  
-        </div>
-        <div class="rightpart">       
-          <p>
-           <span class="glyphicon glyphicon-user"></span>&nbsp;
-           <span class="company1-info">总经理</span>
-         </p>  
-        <span class="company2-info">xxxxxx公司</span>
-       </div>
-
-       <div class="opebut">
-           <button type="button" class="btn btn-success" id="con1">同意申请</button>
-
-            <button type="button" class="btn btn-warning" id="con2">拒绝申请</button>
-       </div>
-
-     </li>  
-     <li data-toggle="modal" data-target="#infopannel">  
-        <div class="leftpart">
-          <span class="name-info">小明</span>  
-        </div>
-        <div class="rightpart">       
-          <p>
-           <span class="glyphicon glyphicon-user"></span>&nbsp;
-           <span class="company1-info">总经理</span>
-         </p>  
-        <span class="company2-info">xxxxxx公司</span>
-       </div>
-
-       <div class="opebut">
-           <button type="button" class="btn btn-success" id="con1">同意申请</button>
-
-            <button type="button" class="btn btn-warning" id="con2">拒绝申请</button>
-       </div>
-
-     </li>  
-     <li data-toggle="modal" data-target="#infopannel">  
-        <div class="leftpart">
-          <span class="name-info">小明</span>  
-        </div>
-        <div class="rightpart">       
-          <p>
-           <span class="glyphicon glyphicon-user"></span>&nbsp;
-           <span class="company1-info">总经理</span>
-         </p>  
-        <span class="company2-info">xxxxxx公司</span>
-       </div>
-
-       <div class="opebut">
-           <button type="button" class="btn btn-success" id="con1">同意申请</button>
-
-            <button type="button" class="btn btn-warning" id="con2">拒绝申请</button>
-       </div>
-     </li>  
-   </ul>  
-</div>
                
 
 <div class="modal fade" id="infopannel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
