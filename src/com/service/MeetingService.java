@@ -15,5 +15,5 @@ public interface MeetingService {
 	public boolean SReleaseMeeting(int mid);
 	public JSONArray ShasReleasedMeeting(int userid,int status1,int status2);
 	public JSONArray SallMeetings();
-	public JSONArray SapplyedMeeting(int uid,int stateid);
+	public JSONArray SapplyedMeeting(int uid,int stateid,int ispresent);
 }

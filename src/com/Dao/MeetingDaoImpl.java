@@ -63,9 +63,9 @@ public class MeetingDaoImpl extends DBDao implements  MeetingDao{
 	}
 	//find meetings with applyer
 	//return resutset
-	public ResultSet applyedMeeting(int uid,int stateid) {
-		String sql = "select * from meeting join applylist on meeting.MeetingID=applylist.MeetingID where applylist.UserID=? and applylist.ApplyState=?;";
-		Object[] obs = {uid,stateid};
+	public ResultSet applyedMeeting(int uid,int applystateid,int ispresent) {
+		String sql = "select * from meeting join applylist on meeting.MeetingID=applylist.MeetingID where applylist.UserID=? and applylist.ApplyState=? and applylist.ispresent=?";
+		Object[] obs = {uid,applystateid,ispresent};
 		return ExecuteQuery(sql,obs);
 	}
 }

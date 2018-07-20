@@ -20,8 +20,8 @@ public class ApplyDaoImpl extends DBDao implements ApplyDao{
 	}
 	
 	public int AddApply(Apply apply) {
-		String sql = "INSERT INTO ApplyList VALUES(?,?,?,?,?,now(),null)";
-		Object[] obs = {apply.getApplyFormID(),apply.getMeetingID(),
+		String sql = "INSERT INTO ApplyList VALUES(null,?,?,?,?,now(),null,0)";
+		Object[] obs = {apply.getMeetingID(),
 				apply.getUserID(),apply.getNote(),apply.getApplyState()};
 		return ExecuteUpdate(sql,obs);
 	}

@@ -101,8 +101,8 @@
                 <a href="javascript:;"><i class="fa fa-calendar fa-lg"></i><span>我参加的会议</span><i class="my-icon nav-more"></i></a>
                 <ul>
                     <li><a href="${pageContext.request.contextPath}/jsp/center-attend-wait.jsp"><span>待审核</span></a></li>
-                    <li><a href="#"><span>待参加会议</span></a></li>
-                    <li><a href="${pageContext.request.contextPath}/jsp/center-attend-have.jsp"><span>已参加会议</span></a></li>
+                    <li><a href="${pageContext.request.contextPath}/jsp/center-attend-to.jsp"><span>待参加会议</span></a></li>
+                    <li><a href="#"><span>已参加会议</span></a></li>
                 </ul>
             </li>
             <li class="nav-item">
@@ -128,7 +128,7 @@
 
         <div class="col-xs-10">
          <div class="meeting">  
-     <ul class="meet-list">  
+     <ul class="meet-list" id="meetlist">  
        <li>  
          <img src="../images/logo1.png" />  
          <h3>Headline</h3>  

@@ -19,5 +19,5 @@ public ResultSet hasReleasedMeeting(int userid, int status1,int status2);
 //find out all meetings
 public ResultSet allMeetings();
 //find meeting with applyer
-public ResultSet applyedMeeting(int uid,int stateid);
+public ResultSet applyedMeeting(int uid,int stateid,int ispresent);
 }

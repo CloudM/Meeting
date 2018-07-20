@@ -189,18 +189,19 @@ public JSONArray SallMeetings() {
 	}
 	return M;
 }
-public JSONArray SapplyedMeeting(int uid,int stateid) {
+public JSONArray SapplyedMeeting(int uid,int stateid,int ispresent) {
 	JSONArray M = new JSONArray(); 
-	ResultSet rs = dao.applyedMeeting(uid,stateid);
+	ResultSet rs = dao.applyedMeeting(uid,stateid,ispresent);
 	if(rs!=null) {
 	try {
 		while(rs.next()) {
 			//Meeting m=new Meeting();
 			JSONObject m = new JSONObject();
+			String type=TypeToString(rs.getInt(2));
 			int count=ser.SCountApply(rs.getInt(1),2);
 			
 			m.put("Mid",rs.getInt(1));
-			m.put("Typeid",rs.getInt(2));
+			m.put("Typeid",type);
 			m.put("Userid",rs.getInt(3));
 			m.put("MeetingStatus",rs.getInt(4));
 			m.put("StartTime",rs.getString(5));

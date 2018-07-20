@@ -16,10 +16,13 @@ import com.function.Cookies;
 import com.function.SessionContext;
 import com.service.ApplyService;
 import com.service.ApplyServiceImpl;
+import com.service.MeetingService;
+import com.service.MeetingServiceImpl;
 
 
 public class ShowApply extends HttpServlet{
 	ApplyService service=new ApplyServiceImpl();
+	MeetingService ser=new MeetingServiceImpl();
 	public ShowApply(){
 		super();
 	}
@@ -53,30 +56,37 @@ public class ShowApply extends HttpServlet{
 		 //check whether the user has applyed the meeting
 		 int count=service.SCountApply(mid, 2);
 		 request.setAttribute("count", count);
-		 if(service.SIsApply(uid,mid)!=null) {
+		 //check wheather the meeting has started
+		if(ser.SFindMeeting(mid).getMeetingStatus()==3||ser.SFindMeeting(mid).getMeetingStatus()==4) {
+			request.getSession().setAttribute("InmeetingID", mid);
+			request.getRequestDispatcher("meeting_center.jsp").forward(request, response);
+			
+			}
+		else {
+			if(service.SIsApply(uid,mid)!=null) {
 			 /*String applyid=apply.getApplyFormID()+"";
 			 Cookie cookie = new Cookie("ApplyId",applyid);
 	    	 response.addCookie(cookie);*/
-			 System.out.println("isapply is not null");
-			 if(service.SIsApply(uid,mid).getApplyState()==3) {
-				 String s="申请参加";
-		    	 request.setAttribute("buttonname", s);
-				 request.getRequestDispatcher("content.jsp").forward(request, response); 
-			 }
-			 else {
-				 String s="取消申请";
-	    	     request.setAttribute("buttonname", s);
-			     request.getRequestDispatcher("content.jsp").forward(request, response);
-			     }
-		 }
-		 else {
-		
-	    	 System.out.println("isapply is null");
-	    	 String s="申请参加";
-	    	 request.setAttribute("buttonname", s);
-			 request.getRequestDispatcher("content.jsp").forward(request, response);
-		 }
-	}
+				System.out.println("isapply is not null");
+				if(service.SIsApply(uid,mid).getApplyState()==3) {
+					String s="申请参加";
+		    	    request.setAttribute("buttonname", s);
+				    request.getRequestDispatcher("content.jsp").forward(request, response);
+				    }
+				else {
+					String s="取消申请";
+	    	        request.setAttribute("buttonname", s);
+			        request.getRequestDispatcher("content.jsp").forward(request, response);
+			        }
+				}
+			else {
+				System.out.println("isapply is null");
+	    	    String s="申请参加";
+	    	    request.setAttribute("buttonname", s);
+			    request.getRequestDispatcher("content.jsp").forward(request, response);
+			    }
+			}
+		}
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
  		doPost(request, response);
 	}

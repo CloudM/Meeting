@@ -49,26 +49,31 @@ public class ShowApplyMeeting extends HttpServlet{
 	    System.out.println("userid="+u.getUid());*/
 	    
 	    
-	    int status1=0;
-	    
+	    int applystatus=0;
+	    int ispresent=0;
+	   
 	    MeetingService service=new MeetingServiceImpl();
 	    JSONArray Mlist = new JSONArray();
 	
 	    	if(method.equals("jsp/wait")) {
-	    		status1=1;
+	    		applystatus=1;
+	    		
 	    		}
 	        else if(method.equals("jsp/have")) {
-	    	    status1=2;
+	        	applystatus=2;
+	        	ispresent=1;
 	    	   
 		        }
 	        else if(method.equals("jsp/to")) {
-	    	    status1=3;
+	        	applystatus=2;
+	        	
+	    		
 	            }
-	    	System.out.println("status="+status1);
+	    	System.out.println("status="+applystatus+ispresent);
 	    //System.out.println("userid+"+user.getUid());
 	    //search meetings with status
-	        if(service.SapplyedMeeting(uid,status1).size()!=0) {
-	    	    Mlist=service.SapplyedMeeting(uid,status1);
+	        if(service.SapplyedMeeting(uid,applystatus,ispresent).size()!=0) {
+	    	    Mlist=service.SapplyedMeeting(uid,applystatus,ispresent);
 	    	
 	    	    System.out.println("Mlist.size:"+Mlist.size());
 	    	    response.getWriter().println(Mlist); 
@@ -77,7 +82,7 @@ public class ShowApplyMeeting extends HttpServlet{
 	        else {
 	    	    request.getRequestDispatcher("jsp/center.jsp").forward(request, response);
 	    	    System.out.println("没有相关会议");
-	    	    response.getWriter().println("none"); 
+	    	    //response.getWriter().println("none"); 
 	    	    }
 	        
 	}

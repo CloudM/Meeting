@@ -43,6 +43,7 @@ public class ApplyAndCancel extends HttpServlet {
 		a.setApplyState(1);
 		a.setMeetingID(mid);
 		a.setUserID(uid);
+		a.setNote(null);
 		System.out.println("meetingid:"+mid);
 		if(service.SIsApply(uid,mid)!=null) {
 			System.out.println("apply is not null");

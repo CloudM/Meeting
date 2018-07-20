@@ -31,7 +31,7 @@ public class ApplyServiceImpl implements ApplyService{
 		//A=null;
 		ResultSet rs=dao.IsApply(uid,mid);
 			try {
-			if(rs != null) {
+			if(rs.next()) {
 				while(rs.next()) {
 					A.setApplyFormID(dao.IsApply(uid,mid).getInt(1));
 					A.setMeetingID(dao.IsApply(uid,mid).getInt(2));
